@@ -5,6 +5,7 @@
    ═══════════════════════════════════════════════════════ */
 
 :root {
+  color-scheme: dark;
   --prune-950: #1a0a12;
   --prune-900: #2a0f1c;
   --prune-800: #3d1428;
@@ -418,4 +419,12 @@ h1 em, h2 em { font-style: italic; color: var(--gold-300); font-weight: 300; }
   .foot__top { grid-template-columns: 1fr; gap: 28px; padding-bottom: 36px; }
   .foot__legal { flex-direction: column; gap: 10px; text-align: center; }
   .quote__text { font-size: 1.6rem; }
+}
+
+/* Compense le rendu plus sombre des écrans mobiles (OLED + dim auto navigateur) */
+@media (max-width: 860px) {
+  .hero__media { filter: brightness(0.92) saturate(1.05) contrast(1.02); }
+  .card__media img,
+  .card__media video { filter: brightness(1.06) saturate(1.05); }
+  .voix__card video { filter: brightness(1.02); }
 }
