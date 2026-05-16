@@ -423,6 +423,11 @@ h1 em, h2 em { font-style: italic; color: var(--gold-300); font-weight: 300; }
 
 /* Compense le rendu plus sombre des écrans mobiles (OLED + dim auto navigateur) */
 @media (max-width: 860px) {
+  :root {
+    --prune-950: #2a1320;
+    --prune-900: #3a1a2c;
+    --prune-800: #4d2238;
+  }
   .hero__media { filter: brightness(0.92) saturate(1.05) contrast(1.02); }
   .card__media img,
   .card__media video { filter: brightness(1.06) saturate(1.05); }
