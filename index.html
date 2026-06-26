@@ -166,17 +166,41 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
 .wa{position:fixed;right:22px;bottom:22px;z-index:60;background:#1f9e54;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(0,0,0,.4);font-size:24px}
 
 @media(max-width:980px){
-  .menu{display:none}.burger{display:flex}
+  .wrap{padding:0 18px}
+  section.block{padding:58px 0}
+  .burger{display:flex}
+  .nav-search{display:none}
+  .menu{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;background:rgba(18,7,12,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:6px 0;font-size:15px}
+  header.open .menu{display:flex}
+  .menu a{padding:15px 24px;border-bottom:1px solid rgba(201,162,108,.12)}
+  .menu a:last-child{border-bottom:none}
   .tiles{grid-template-columns:1fr}
+  .tile{height:210px}
   .cat-grid{grid-template-columns:repeat(2,1fr)}
   .foot-grid{grid-template-columns:1fr 1fr}
-  .govideo h2{font-size:18vw}
+  .hero{align-items:flex-end}
+  .hero .slide-bg img{object-position:center 22%}
+  .hero .scrim{background:linear-gradient(180deg,rgba(18,7,12,.12) 28%,rgba(18,7,12,.55) 62%,rgba(18,7,12,.94))}
+  .hero-copy{padding-bottom:26px}
+  .hero-arrows{display:none}
+  .fit{height:auto;padding:72px 22px}
+  .govideo{height:78vh;min-height:0}
+  .govideo h2{font-size:17vw}
 }
 @media(max-width:560px){
   .cat-grid{grid-template-columns:1fr}
-  .shades{gap:20px}.shade-item .dot{width:74px;height:74px}
+  .shades{gap:16px}.shade-item .dot{width:72px;height:72px}
+  .shade-item{flex:0 0 calc(50% - 8px)}
   .foot-grid{grid-template-columns:1fr}
-  .hero-copy h1{font-size:46px}
+  .hero-copy h1{font-size:44px}
+  .hero-copy p{font-size:15px}
+  .tile h3{font-size:34px}
+  .pcard{flex:0 0 80vw}
+  .reel{flex:0 0 72vw}
+  h2.title{font-size:30px}
+  .hero-cta{width:100%}
+  .hero-cta .btn{flex:1;justify-content:center}
+  .pay-icons{justify-content:flex-start}
 }
 </style>
 </head>
@@ -197,9 +221,9 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
       <a href="#action">Communauté</a>
     </nav>
     <div class="nav-icons">
-      <a href="#fit">Recherche</a>
+      <a href="#fit" class="nav-search">Recherche</a>
       <a href="#commander" class="btn btn-gold" style="padding:10px 20px">Commander</a>
-      <div class="burger" onclick="document.querySelector('.menu').style.display='flex'"><span></span><span></span><span></span></div>
+      <div class="burger" onclick="document.querySelector('header').classList.toggle('open')"><span></span><span></span><span></span></div>
     </div>
   </div>
 </header>
@@ -360,6 +384,7 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
 
 <script>
 function scrollTrack(id,dir){var t=document.getElementById(id);t.scrollBy({left:dir*340,behavior:'smooth'});}
+document.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('header').classList.remove('open');});});
 </script>
 </body>
 </html>
