@@ -1,298 +1,365 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="color-scheme" content="dark" />
-<meta name="supported-color-schemes" content="dark" />
-<meta name="theme-color" content="#1a0a12" />
-<title>FARAMAYA HAIR — L'art du cheveu indien premium</title>
-<meta name="description" content="Mèches indiennes 100% naturelles, qualité Raw premium. Tissages, lace, kinky, wavy & straight. Densité incroyable, pose impeccable, pour celles qui ne transigent pas." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FARAMAYA HAIR — Mèches indiennes Raw premium</title>
+<meta name="description" content="Mèches 100% Raw, collectées d'une seule donatrice, jamais traitées. Lisse, wavy, curly, bob, kinky. Densité réelle, brillance durable. Livraison 72h, paiement flexible.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="icon" type="image/png" href="assets/brand/logo-faramaya.png">
-</head>
-<body>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#1a0a12; --plum-2:#241019; --plum-3:#2e1422;
+  --gold:#c9a26c; --gold-2:#e3c79a; --rose:#caa0a8;
+  --cream:#f3e9e4; --muted:#b6968f; --line:rgba(201,162,108,.22);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--plum);color:var(--cream);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+.serif{font-family:var(--serif)}
+.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:400}
+h2.title{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,46px);line-height:1.08;margin:8px 0}
+h2.title em{font-style:italic;color:var(--gold-2)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:13px 26px;border-radius:2px;cursor:pointer;transition:.3s;border:1px solid transparent}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#241019}
+.btn-gold:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-2)}
+.btn-light{background:var(--cream);color:#241019}
+.center{text-align:center}
 
-<!-- ── NAV ─────────────────────────────────────── -->
-<header class="nav" id="nav">
-  <a href="#top" class="nav__brand">
-    <span class="nav__logo">FARAMAYA</span>
-    <span class="nav__sub">HAIR · Maison de coiffure</span>
-  </a>
-  <nav class="nav__links">
-    <a href="#collection">Collection</a>
-    <a href="#voix">Elles l'ont adoptée</a>
-    <a href="#origine">Notre origine</a>
-    <a href="#faq">FAQ</a>
-  </nav>
-  <a href="#commander" class="btn btn--ghost btn--small">Commander</a>
+/* 1. Announcement */
+.announce{background:var(--plum-3);color:var(--gold-2);text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:9px 14px;border-bottom:1px solid var(--line)}
+
+/* 2. Header */
+header{position:sticky;top:0;z-index:50;background:rgba(18,7,12,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:var(--serif);font-size:25px;letter-spacing:.18em;color:var(--cream)}
+.logo span{color:var(--gold)}
+.menu{display:flex;gap:30px;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:400}
+.menu a{color:var(--muted);transition:.25s}
+.menu a:hover{color:var(--gold-2)}
+.nav-icons{display:flex;align-items:center;gap:18px;font-size:13px;color:var(--muted)}
+.nav-icons a:hover{color:var(--gold-2)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:23px;height:1.5px;background:var(--cream)}
+
+/* 3. Hero slider */
+.hero{position:relative;height:78vh;min-height:540px;overflow:hidden;display:flex;align-items:center}
+.hero .slide-bg{position:absolute;inset:0}
+.hero .slide-bg img{width:100%;height:100%;object-fit:cover;object-position:center 28%}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,7,12,.86) 8%,rgba(26,10,18,.45) 50%,rgba(26,10,18,.2))}
+.hero-inner{position:relative;width:100%}
+.hero-copy{max-width:560px}
+.hero-copy .eyebrow{color:var(--gold-2)}
+.hero-copy h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6vw,76px);line-height:.98;margin:14px 0 10px}
+.hero-copy h1 em{font-style:italic;color:var(--gold-2)}
+.hero-copy p{font-size:17px;opacity:.9;margin-bottom:8px}
+.code-pill{display:inline-block;margin:18px 0 24px;border:1px dashed var(--gold);color:var(--gold-2);padding:9px 18px;border-radius:3px;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap}
+.hero-arrows{position:absolute;bottom:26px;right:34px;display:flex;gap:10px}
+.hero-arrows button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(18,7,12,.5);color:var(--cream);cursor:pointer;font-size:16px;transition:.25s}
+.hero-arrows button:hover{border-color:var(--gold);color:var(--gold-2)}
+
+/* 4. Marquee value props */
+.marquee{background:var(--plum-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:0;animation:scroll 26s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.mq{display:inline-flex;align-items:center;gap:12px;padding:15px 36px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream)}
+.mq i{color:var(--gold);font-style:normal;font-family:var(--serif);font-size:17px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* 5. 3 promo tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.tile{position:relative;height:300px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;border-right:1px solid var(--line)}
+.tile:last-child{border-right:none}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.6s;opacity:.55}
+.tile:hover img{transform:scale(1.06)}
+.tile .tl{position:relative;z-index:2}
+.tile h3{font-family:var(--serif);font-size:42px;font-weight:600;letter-spacing:.04em;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.tile p{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2);margin:6px 0 16px}
+
+/* section base */
+section.block{padding:84px 0}
+
+/* 6. category grid */
+.cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:42px}
+.cat{position:relative;border-radius:3px;overflow:hidden;aspect-ratio:3/4.2;border:1px solid var(--line)}
+.cat img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.cat:hover img{transform:scale(1.06)}
+.cat .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,7,12,.93) 6%,rgba(18,7,12,.05) 52%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px 16px;text-align:center}
+.cat h3{font-family:var(--serif);font-size:24px;font-weight:500}
+.cat span{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);margin:3px 0 12px}
+.cat .btn{width:100%;justify-content:center;padding:10px}
+
+/* 7. find your fit */
+.fit{position:relative;height:420px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fit img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.4}
+.fit .fc{position:relative;z-index:2;max-width:560px}
+.fit .hero-cta{justify-content:center}
+
+/* 8. shade tones */
+.shades{display:flex;justify-content:center;flex-wrap:wrap;gap:34px;margin-top:42px}
+.shade-item{text-align:center}
+.shade-item .dot{width:96px;height:96px;border-radius:50%;border:1px solid var(--line);margin:0 auto 12px;box-shadow:inset 0 -10px 24px rgba(0,0,0,.4)}
+.shade-item span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* 9. bestsellers carousel */
+.carousel{position:relative;margin-top:42px}
+.car-track{display:flex;gap:22px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:none}
+.car-track::-webkit-scrollbar{display:none}
+.pcard{flex:0 0 300px;background:var(--plum-2);border:1px solid var(--line);border-radius:3px;overflow:hidden;transition:.3s}
+.pcard:hover{border-color:var(--gold)}
+.pcard .ph{aspect-ratio:1/1;overflow:hidden;background:var(--plum-3);position:relative}
+.pcard .ph img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.pcard:hover .ph img{transform:scale(1.05)}
+.pcard .sale{position:absolute;top:12px;right:12px;background:var(--gold);color:#241019;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:2px;font-weight:600}
+.pcard .pb{padding:18px 18px 22px}
+.pcard h3{font-family:var(--serif);font-size:21px;font-weight:500;margin-bottom:6px}
+.pcard .pr{font-size:15px;color:var(--gold-2);margin-bottom:4px}
+.pcard .pr small{color:var(--muted);text-decoration:line-through;margin-left:6px}
+.pcard .ex{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose)}
+.pcard .btn{width:100%;justify-content:center;margin-top:14px}
+.car-nav{display:flex;gap:10px;justify-content:center;margin-top:24px}
+.car-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--cream);cursor:pointer;font-size:16px;transition:.25s}
+.car-nav button:hover{border-color:var(--gold);color:var(--gold-2)}
+
+/* 10. GO EASY video */
+.govideo{position:relative;height:90vh;min-height:560px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.govideo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.govideo .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,7,12,.7),rgba(18,7,12,.25) 45%,rgba(18,7,12,.55))}
+.govideo .gc{position:relative;z-index:2}
+.govideo h2{font-family:var(--serif);font-size:clamp(60px,12vw,150px);font-weight:600;letter-spacing:.04em;line-height:1;text-shadow:0 4px 40px rgba(0,0,0,.5)}
+.govideo p{font-size:17px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2);margin:14px 0 26px}
+
+/* 11. See it in action reels */
+.reels-track{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:10px;margin-top:42px;scrollbar-width:none}
+.reels-track::-webkit-scrollbar{display:none}
+.reel{flex:0 0 280px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--plum-2)}
+.reel .rv{position:relative;aspect-ratio:9/16;background:var(--plum-3)}
+.reel video{width:100%;height:100%;object-fit:cover;display:block}
+.reel .tag{position:absolute;left:12px;bottom:12px;right:12px;background:rgba(18,7,12,.82);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:3px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between}
+.reel .tag b{font-family:var(--serif);font-size:16px;color:var(--cream);font-weight:500}
+.reel .tag span{font-size:13px;color:var(--gold-2)}
+.reel .tag .ad{font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:5px 8px;border-radius:2px;color:var(--cream);cursor:pointer}
+
+/* 12. footer */
+footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:40px}
+.foot-grid h5{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.foot-grid a,.foot-grid p{display:block;font-size:14px;color:var(--muted);margin-bottom:10px;transition:.2s}
+.foot-grid a:hover{color:var(--gold-2)}
+.foot-logo{font-family:var(--serif);font-size:24px;letter-spacing:.16em}
+.foot-logo span{color:var(--gold)}
+.news{display:flex;gap:8px;margin:14px 0}
+.news input{flex:1;background:var(--plum-3);border:1px solid var(--line);border-radius:2px;padding:12px 14px;color:var(--cream);font-family:var(--sans);font-size:13px}
+.news input::placeholder{color:var(--muted)}
+.pay-icons{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.pay-icons span{font-size:10px;letter-spacing:.06em;border:1px solid var(--line);border-radius:3px;padding:5px 9px;color:var(--muted)}
+.foot-bottom{border-top:1px solid var(--line);margin-top:46px;padding-top:22px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);letter-spacing:.05em;flex-wrap:wrap;gap:10px}
+
+.wa{position:fixed;right:22px;bottom:22px;z-index:60;background:#1f9e54;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(0,0,0,.4);font-size:24px}
+
+@media(max-width:980px){
+  .menu{display:none}.burger{display:flex}
+  .tiles{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .govideo h2{font-size:18vw}
+}
+@media(max-width:560px){
+  .cat-grid{grid-template-columns:1fr}
+  .shades{gap:20px}.shade-item .dot{width:74px;height:74px}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-copy h1{font-size:46px}
+}
+</style>
+</head>
+<body id="top">
+
+<!-- 1 -->
+<div class="announce">Livraison offerte dès 150€ · −10% sur votre 1ʳᵉ commande, code FARA10 · Conseil gratuit sur WhatsApp</div>
+
+<!-- 2 -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">FARA<span>MAYA</span><em style="font-style:normal;font-size:13px;letter-spacing:.36em;color:var(--muted);margin-left:9px">HAIR</em></a>
+    <nav class="menu">
+      <a href="#collection">Boutique</a>
+      <a href="#collection">Textures</a>
+      <a href="#bestsellers">Best-sellers</a>
+      <a href="#fit">Trouvez votre style</a>
+      <a href="#action">Communauté</a>
+    </nav>
+    <div class="nav-icons">
+      <a href="#fit">Recherche</a>
+      <a href="#commander" class="btn btn-gold" style="padding:10px 20px">Commander</a>
+      <div class="burger" onclick="document.querySelector('.menu').style.display='flex'"><span></span><span></span><span></span></div>
+    </div>
+  </div>
 </header>
 
-<!-- ── HERO ────────────────────────────────────── -->
-<section class="hero" id="top">
-  <img class="hero__bg" src="assets/editorial/wavy-natural-hero.png" alt="Modèle portant une mèche Faramaya Wavy Natural">
-  <div class="hero__veil"></div>
-  <div class="hero__content">
-    <p class="eyebrow">— Maison Faramaya · Cheveu indien Raw</p>
-    <h1>L'art du cheveu<br><em>naturel premium.</em></h1>
-    <p class="lede">Mèches 100% Raw, collectées d'une seule donatrice, jamais traitées chimiquement. Une densité qui dure, un brillant qui ne s'éteint pas.</p>
-    <div class="hero__cta">
-      <a href="#collection" class="btn btn--gold">Découvrir la collection</a>
-      <a href="#voix" class="btn btn--ghost">Voir les avis →</a>
+<!-- 3 hero -->
+<section class="hero">
+  <div class="slide-bg"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3785f620-7703-4f78-9c63-0efd0eaf109c.png" alt="Mèche Faramaya lisse Raw premium"></div>
+  <div class="scrim"></div>
+  <div class="hero-inner"><div class="wrap"><div class="hero-copy">
+    <span class="eyebrow">Mèche Raw signature · −10%</span>
+    <h1>Plus de densité, <em>plus de liberté.</em></h1>
+    <p>Cheveu indien 100% Raw, donatrice unique, jamais retraité.</p>
+    <div class="code-pill">Code : FARA10</div>
+    <div class="hero-cta">
+      <a href="#collection" class="btn btn-light">Découvrir la collection</a>
+      <a href="#action" class="btn btn-ghost">Voir en action →</a>
     </div>
-    <ul class="hero__trust">
-      <li><strong>9/10</strong><span>note moyenne clientes</span></li>
-      <li><strong>+ 300</strong><span>femmes parées</span></li>
-      <li><strong>72h</strong><span>livraison Europe</span></li>
-    </ul>
-  </div>
-  <div class="hero__scroll">scroll ↓</div>
+  </div></div></div>
+  <div class="hero-arrows"><button aria-label="précédent">‹</button><button aria-label="suivant">›</button></div>
 </section>
 
-<!-- ── PROMESSE ────────────────────────────────── -->
-<section class="promise">
-  <div class="promise__grid">
-    <article>
-      <div class="promise__num">01</div>
-      <h3>Cheveu Raw, jamais retraité</h3>
-      <p>Aucun bain acide, aucun silicone. La cuticule reste alignée — la mèche ne s'emmêle pas après lavage.</p>
-    </article>
-    <article>
-      <div class="promise__num">02</div>
-      <h3>Densité réelle, du haut à la pointe</h3>
-      <p>250 à 300 g par bundle. Vous percevrez la différence dès le déballage — et après plusieurs poses.</p>
-    </article>
-    <article>
-      <div class="promise__num">03</div>
-      <h3>Réutilisable 2 à 3 ans</h3>
-      <p>Avec un entretien simple, votre Faramaya vous accompagne pose après pose. Le luxe qui se prolonge.</p>
-    </article>
-    <article>
-      <div class="promise__num">04</div>
-      <h3>Coloration & lissage acceptés</h3>
-      <p>Cheveu vivant : il accueille les transformations comme le vôtre, sans casser.</p>
-    </article>
+<!-- 4 marquee -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="mq"><i>✦</i> 100% Cheveu Raw</span><span class="mq"><i>✦</i> Livraison 72h Europe</span>
+    <span class="mq"><i>✦</i> Échange &amp; retour 30 jours</span><span class="mq"><i>✦</i> Paiement sécurisé &amp; flexible</span>
+    <span class="mq"><i>✦</i> Donatrice unique</span>
+    <span class="mq"><i>✦</i> 100% Cheveu Raw</span><span class="mq"><i>✦</i> Livraison 72h Europe</span>
+    <span class="mq"><i>✦</i> Échange &amp; retour 30 jours</span><span class="mq"><i>✦</i> Paiement sécurisé &amp; flexible</span>
+    <span class="mq"><i>✦</i> Donatrice unique</span>
   </div>
-</section>
+</div>
 
-<!-- ── COLLECTION ──────────────────────────────── -->
-<section class="collection" id="collection">
-  <header class="section__head">
-    <p class="eyebrow">— Collection signature</p>
-    <h2>Trois textures.<br><em>Une seule exigence.</em></h2>
-    <p class="section__sub">Chaque modèle Faramaya existe en 14", 16", 18", 20", 22", 24", 26", 28", 30" — bundle simple, ou closure / frontal HD.</p>
-  </header>
+<!-- 5 tiles -->
+<div class="tiles">
+  <a class="tile" href="#bestsellers"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3534e3a4-a4a6-4c59-b816-0225a145e2c7.png" alt="Déstockage"><div class="tl"><h3>Déstockage</h3><p>Stocks limités</p><span class="btn btn-ghost">Voir les offres</span></div></a>
+  <a class="tile" href="#commander"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/1fbe65f0-3f75-4b81-a26d-d25f97d075fa.png" alt="VIP"><div class="tl"><h3>VIP</h3><p>Accès privilégié</p><span class="btn btn-ghost">Rejoindre</span></div></a>
+  <a class="tile" href="#bestsellers"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/769f7b8d-8eeb-43c1-aff0-ea32946f7961.png" alt="Best-sellers"><div class="tl"><h3>Best-sellers</h3><p>2 achetées = −50% sur la 2ᵉ</p><span class="btn btn-ghost">Acheter</span></div></a>
+</div>
 
-  <div class="cards">
-    <article class="card" data-model="Wavy Natural">
-      <div class="card__media">
-        <img src="assets/editorial/wavy-natural-hero.png" alt="Mèche Wavy Natural">
-        <video muted loop playsinline poster="assets/models/poster-01.jpg" preload="none" class="card__zoom">
-          <source src="assets/models/model-01.mp4" type="video/mp4">
-        </video>
-        <span class="card__badge">Bestseller</span>
-      </div>
-      <div class="card__body">
-        <p class="card__kicker">Modèle 01</p>
-        <h3>Wavy Natural</h3>
-        <p>L'ondulation indienne brute, naturellement définie. Parfait pour un effet « cheveu de famille ».</p>
-        <div class="card__foot">
-          <span class="price">dès 180€ <small>/ bundle</small></span>
-          <a href="#commander" class="btn btn--mini" data-order="Wavy Natural">Commander</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="card" data-model="Kinky Curly">
-      <div class="card__media">
-        <img src="assets/editorial/kinky-curly-power.png" alt="Mèche Kinky Curly">
-        <video muted loop playsinline poster="assets/models/poster-02.jpg" preload="none" class="card__zoom">
-          <source src="assets/models/model-02.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="card__body">
-        <p class="card__kicker">Modèle 02</p>
-        <h3>Kinky Curly</h3>
-        <p>Boucle serrée, volume audacieux. Pour celles qui veulent honorer leur texture naturelle, en mieux.</p>
-        <div class="card__foot">
-          <span class="price">dès 195€ <small>/ bundle</small></span>
-          <a href="#commander" class="btn btn--mini" data-order="Kinky Curly">Commander</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="card" data-model="Straight Silk">
-      <div class="card__media">
-        <img src="assets/editorial/straight-silk-elegance.png" alt="Mèche Straight Silk">
-        <video muted loop playsinline poster="assets/models/poster-03.jpg" preload="none" class="card__zoom">
-          <source src="assets/models/model-03.mp4" type="video/mp4">
-        </video>
-        <span class="card__badge card__badge--alt">Facile à lisser</span>
-      </div>
-      <div class="card__body">
-        <p class="card__kicker">Modèle 03</p>
-        <h3>Straight Silk</h3>
-        <p>La ligne pure, la chute soyeuse. Tient au brushing, supporte le fer, garde son éclat.</p>
-        <div class="card__foot">
-          <span class="price">dès 175€ <small>/ bundle</small></span>
-          <a href="#commander" class="btn btn--mini" data-order="Straight Silk">Commander</a>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- ── CITATION CHARNIÈRE ──────────────────────── -->
-<section class="quote">
-  <p class="quote__text">« La densité est <em>incroyable</em>. <br>On perd pas de masse, même après deux poses. »</p>
-  <p class="quote__author">— Ruth M., cliente Faramaya</p>
-</section>
-
-<!-- ── VOIX (Social proof) ─────────────────────── -->
-<section class="voix" id="voix">
-  <header class="section__head section__head--center">
-    <p class="eyebrow">— Elles l'ont adoptée</p>
-    <h2>La preuve, <em>par celles qui la portent.</em></h2>
-  </header>
-
-  <div class="voix__grid">
-    <figure class="voix__card">
-      <video muted loop playsinline poster="assets/models/poster-07.jpg" preload="metadata" onmouseover="this.play()" onmouseout="this.pause()">
-        <source src="assets/models/model-07.mp4" type="video/mp4">
-      </video>
-      <figcaption>
-        <p>« Qualité top, je remets 9/10. »</p>
-        <cite>Maria — Sarcelles</cite>
-      </figcaption>
-    </figure>
-
-    <figure class="voix__card voix__card--featured">
-      <video muted loop playsinline poster="assets/models/poster-09.jpg" preload="metadata" onmouseover="this.play()" onmouseout="this.pause()">
-        <source src="assets/models/model-09.mp4" type="video/mp4">
-      </video>
-      <figcaption>
-        <p>« Les Kinky j'ai rien à dire. Densité incroyable, je les ai utilisées deux fois. »</p>
-        <cite>Ruth Musombo</cite>
-      </figcaption>
-    </figure>
-
-    <figure class="voix__card">
-      <video muted loop playsinline poster="assets/models/poster-08.jpg" preload="metadata" onmouseover="this.play()" onmouseout="this.pause()">
-        <source src="assets/models/model-08.mp4" type="video/mp4">
-      </video>
-      <figcaption>
-        <p>« Le rendu lifestyle parle de lui-même. »</p>
-        <cite>Cliente Faramaya</cite>
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ── ORIGINE ─────────────────────────────────── -->
-<section class="origine" id="origine">
-  <div class="origine__text">
-    <p class="eyebrow">— Notre origine</p>
-    <h2>De l'Inde à votre miroir,<br><em>une seule promesse.</em></h2>
-    <p>Chaque mèche Faramaya provient d'un temple du Sud de l'Inde, où la donation des cheveux est un rituel sacré. Une seule donatrice par bundle. Pas de mélange, pas d'agressions chimiques, pas de raccourci.</p>
-    <p>Nous sélectionnons. Nous trions à la main. Nous coupons selon les longueurs précises. C'est ce qui justifie le prix — et la durée de vie.</p>
-    <ul class="origine__pills">
-      <li>Single donor</li>
-      <li>100% Raw</li>
-      <li>Cuticules alignées</li>
-      <li>Sans silicone</li>
-      <li>Coloration possible</li>
-    </ul>
-  </div>
-  <div class="origine__media">
-    <img src="assets/editorial/straight-silk-elegance.png" alt="Mèche Straight Silk Faramaya" loading="lazy">
-  </div>
-</section>
-
-<!-- ── FAQ ─────────────────────────────────────── -->
-<section class="faq" id="faq">
-  <header class="section__head">
-    <p class="eyebrow">— FAQ</p>
-    <h2>Les réponses<br><em>que vous cherchez.</em></h2>
-  </header>
-  <div class="faq__list">
-    <details>
-      <summary>Combien de bundles pour une pose complète ?</summary>
-      <p>Pour une longueur jusqu'à 22", 3 bundles suffisent. Au-delà de 24", nous conseillons 4 bundles pour une densité parfaite.</p>
-    </details>
-    <details>
-      <summary>Puis-je colorer ou décolorer ma Faramaya ?</summary>
-      <p>Oui. Comme le cheveu est Raw, il accueille toute coloration — y compris décoloration jusqu'au blond. Faites appel à un professionnel.</p>
-    </details>
-    <details>
-      <summary>Quel est le délai de livraison ?</summary>
-      <p>72h en France et Europe via Chronopost. International : 5 à 7 jours ouvrés. Suivi envoyé par WhatsApp.</p>
-    </details>
-    <details>
-      <summary>Quel entretien pour qu'elles durent 2 ans ?</summary>
-      <p>Lavage doux toutes les 2 semaines, masque hydratant, séchage à l'air libre, démêlage pointes vers racines. Nous offrons la fiche d'entretien à chaque commande.</p>
-    </details>
-    <details>
-      <summary>Comment passer commande ?</summary>
-      <p>Cliquez sur « Commander » : vous serez dirigée vers notre WhatsApp business, où nous validons ensemble la texture, longueur et adresse de livraison.</p>
-    </details>
-  </div>
-</section>
-
-<!-- ── CTA FINAL ───────────────────────────────── -->
-<section class="cta" id="commander">
-  <div class="cta__inner">
-    <p class="eyebrow">— Prête à passer commande</p>
-    <h2>Votre prochaine pose<br>commence <em>maintenant.</em></h2>
-    <p class="cta__lede">Conseil gratuit, paiement sécurisé, livraison suivie. Notre équipe vous répond personnellement sur WhatsApp en moins de 10 minutes ouvrées.</p>
-    <a href="https://wa.me/33XXXXXXXXX?text=Bonjour%20Faramaya%2C%20je%20souhaite%20commander%20une%20m%C3%A8che." class="btn btn--gold btn--xl" id="ctaWa">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.867 11.867 0 010 5.945C0 2.664 2.66 0 5.94 0a11.94 11.94 0 018.413 3.488 11.86 11.86 0 013.48 8.413c0 6.554-5.34 11.89-11.89 11.89a11.86 11.86 0 01-5.682-1.45L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.003-5.462-4.415-9.89-9.881-9.892C6.6 1.999 2.165 6.439 2.169 11.889c.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.738-.978zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.173.198-.297.297-.495.099-.198.05-.371-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.371-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
-      Commander sur WhatsApp
-    </a>
-    <p class="cta__small">ou écrivez-nous : <a href="mailto:contact@faramayahair.com">contact@faramayahair.com</a></p>
-  </div>
-</section>
-
-<!-- ── FOOTER ──────────────────────────────────── -->
-<footer class="foot">
-  <div class="foot__top">
-    <div class="foot__brand">
-      <p class="foot__wordmark">FARAMAYA</p>
-      <p class="foot__tagline">Hair · Maison de coiffure</p>
-      <p>Faramaya Hair — Maison de mèches indiennes premium. Pour celles qui ne transigent pas.</p>
-    </div>
-    <div class="foot__col">
-      <h4>Maison</h4>
-      <a href="#collection">Collection</a>
-      <a href="#origine">Notre origine</a>
-      <a href="#voix">Témoignages</a>
-    </div>
-    <div class="foot__col">
-      <h4>Service</h4>
-      <a href="#faq">FAQ</a>
-      <a href="#commander">Commander</a>
-      <a href="mailto:contact@faramayahair.com">Email</a>
-    </div>
-    <div class="foot__col">
-      <h4>Suivez-nous</h4>
-      <a href="https://instagram.com/faramayahair" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://tiktok.com/@faramayahair" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://wa.me/33XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+<!-- 6 collection -->
+<section class="block" id="collection">
+  <div class="wrap center">
+    <span class="eyebrow">Acheter par texture</span>
+    <h2 class="title">Notre <em>collection</em></h2>
+    <div class="cat-grid">
+      <div class="cat"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3785f620-7703-4f78-9c63-0efd0eaf109c.png" alt="Mèche lisse"><div class="ov"><h3>Lisse</h3><span>Lissage intégral</span><a href="#bestsellers" class="btn btn-gold">Acheter</a></div></div>
+      <div class="cat"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/b566d0e6-0f72-406d-bb5f-0395893a02fa.png" alt="Mèche ondulée"><div class="ov"><h3>Ondulé</h3><span>Ondulation naturelle</span><a href="#bestsellers" class="btn btn-gold">Acheter</a></div></div>
+      <div class="cat"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/d86accdb-6310-4baa-8f1b-5d21539d3931.png" alt="Mèche bouclée"><div class="ov"><h3>Bouclé</h3><span>Boucle profonde</span><a href="#bestsellers" class="btn btn-gold">Acheter</a></div></div>
+      <div class="cat"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/4ccaf4e9-2fc8-48a8-a7fa-bd2b97b879ce.png" alt="Carré lace"><div class="ov"><h3>Carré</h3><span>Carré lace</span><a href="#bestsellers" class="btn btn-gold">Acheter</a></div></div>
+      <div class="cat"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/a8b4b3a6-87b8-461f-bda2-b066dfed1c0b.png" alt="Mèche crépue lissée"><div class="ov"><h3>Crépu lissé</h3><span>Texture afro</span><a href="#bestsellers" class="btn btn-gold">Acheter</a></div></div>
     </div>
   </div>
-  <div class="foot__legal">
-    <p>© 2026 Faramaya Hair. Tous droits réservés.</p>
-    <p>Site conçu avec exigence par <a href="#">MR Tech Lab</a></p>
+</section>
+
+<!-- 7 find your fit -->
+<section class="fit" id="fit">
+  <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/d86accdb-6310-4baa-8f1b-5d21539d3931.png" alt="Trouvez votre style Faramaya">
+  <div class="fc">
+    <span class="eyebrow">Trouvez votre style</span>
+    <h2 class="title">Votre texture, votre teinte, <em>votre longueur.</em></h2>
+    <div class="hero-cta">
+      <a href="#teintes" class="btn btn-gold">Trouver ma teinte</a>
+      <a href="#commander" class="btn btn-ghost">Conseil sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- 8 shade tones -->
+<section class="block center" id="teintes">
+  <div class="wrap">
+    <span class="eyebrow">Guide des teintes</span>
+    <h2 class="title">Plus de <em>40 nuances</em></h2>
+    <div class="shades">
+      <div class="shade-item"><div class="dot" style="background:#1c1310"></div><span>Naturel</span></div>
+      <div class="shade-item"><div class="dot" style="background:#4a2e1c"></div><span>Brun</span></div>
+      <div class="shade-item"><div class="dot" style="background:#7e5024"></div><span>Miel</span></div>
+      <div class="shade-item"><div class="dot" style="background:#d8c08a"></div><span>613 Blond</span></div>
+      <div class="shade-item"><div class="dot" style="background:linear-gradient(135deg,#1c1310,#b07d3c)"></div><span>Highlights</span></div>
+      <div class="shade-item"><div class="dot" style="background:linear-gradient(135deg,#8a1d2a,#3d2547)"></div><span>Couleurs</span></div>
+    </div>
+    <p style="font-size:12px;color:var(--rose);margin-top:26px">Nuancier complet (47 teintes) communiqué sur demande WhatsApp.</p>
+  </div>
+</section>
+
+<!-- 9 bestsellers carousel -->
+<section class="block" id="bestsellers" style="background:var(--plum-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">Les plus adoptées</span><h2 class="title">Nos <em>best-sellers</em></h2></div>
+    <div class="carousel">
+      <div class="car-track" id="bestTrack">
+        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/a987f7b6-11f9-4473-9f20-c4b6747c89eb.png" alt="Mèche lisse"><span class="sale">−10%</span></div><div class="pb"><h3>Lisse — Lissage intégral</h3><div class="pr">dès 175€ <small>195€</small></div><div class="ex">prix exemple</div><a href="#commander" class="btn btn-gold">Ajout rapide</a></div></div>
+        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/769f7b8d-8eeb-43c1-aff0-ea32946f7961.png" alt="Mèche ondulée"></div><div class="pb"><h3>Ondulé — Ondulation naturelle</h3><div class="pr">dès 185€</div><div class="ex">prix exemple</div><a href="#commander" class="btn btn-gold">Ajout rapide</a></div></div>
+        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/fc2e64d7-ac0f-4b4f-91e8-7a57719d3c9e.png" alt="Mèche crépue lissée"><span class="sale">Afro</span></div><div class="pb"><h3>Crépu lissé</h3><div class="pr">dès 195€</div><div class="ex">prix exemple</div><a href="#commander" class="btn btn-gold">Ajout rapide</a></div></div>
+        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3534e3a4-a4a6-4c59-b816-0225a145e2c7.png" alt="Pack closure + mèches"></div><div class="pb"><h3>Pack Closure + 3 Mèches</h3><div class="pr">dès 520€</div><div class="ex">prix exemple</div><a href="#commander" class="btn btn-gold">Ajout rapide</a></div></div>
+        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/1fbe65f0-3f75-4b81-a26d-d25f97d075fa.png" alt="Lisse premium"></div><div class="pb"><h3>Lisse Premium 30"</h3><div class="pr">dès 240€</div><div class="ex">prix exemple</div><a href="#commander" class="btn btn-gold">Ajout rapide</a></div></div>
+      </div>
+      <div class="car-nav"><button onclick="scrollTrack('bestTrack',-1)">‹</button><button onclick="scrollTrack('bestTrack',1)">›</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 GO EASY video -->
+<section class="govideo" id="goeasy">
+  <video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_131251_d128eb05-4d89-4111-8830-bfbd6f141a97.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3785f620-7703-4f78-9c63-0efd0eaf109c.png" autoplay muted loop playsinline></video>
+  <div class="scrim"></div>
+  <div class="gc">
+    <span class="eyebrow" style="color:var(--gold-2)">Maison Faramaya Hair</span>
+    <h2 class="serif">EN TOUTE<br>AISANCE.</h2>
+    <p>Le luxe qui se porte au quotidien</p>
+    <a href="#collection" class="btn btn-light">Découvrir</a>
+  </div>
+</section>
+
+<!-- 11 see it in action -->
+<section class="block" id="action">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">Elles l'ont adoptée</span><h2 class="title">Vu <em>en action</em></h2></div>
+    <div class="reels-track" id="reelsTrack">
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_131254_2068dca2-0c3b-4792-9651-426960c8f200.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3785f620-7703-4f78-9c63-0efd0eaf109c.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Lisse</b><span> · dès 175€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_133619_cf6e6f01-6255-4c4a-888c-fac9617181b7.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/9e4da019-781d-4b3a-9b07-8b39a1256561.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Ondulé</b><span> · studio</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_131256_e7d8a236-e2e8-44f9-b844-a77a28efe70e.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/b566d0e6-0f72-406d-bb5f-0395893a02fa.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Ondulé naturel</b><span> · dès 185€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_133558_fddc7488-c58c-4f56-bf38-cbe63aa7fd4c.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/7755ae11-0e33-43b8-9717-d5ceb3ea24d3.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Bouclé</b><span> · coucher de soleil</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_131257_b4ee7486-c432-4ecd-b498-2fad7d83af61.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/d86accdb-6310-4baa-8f1b-5d21539d3931.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Boucle profonde</b><span> · dès 190€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_133611_e1a59cb3-583a-4e04-9265-95cb22bc7b66.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/b6cd3de4-1899-4839-9f80-a2e1dfcff081.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Carré bouclé</b><span> · salon</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_131259_2f39eaae-9162-4624-b7ae-0fc0c352fa7c.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/4ccaf4e9-2fc8-48a8-a7fa-bd2b97b879ce.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Carré lace</b><span> · dès 160€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_133816_96c59d46-104b-40e8-a86e-2a545a7fc46f.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/d6d4bf69-14b1-4c6a-ab4f-118ede240a21.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Lisse</b><span> · lifestyle</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_131301_543d7417-6043-4025-b227-edd3a1122cc4.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/a8b4b3a6-87b8-461f-bda2-b066dfed1c0b.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Crépu lissé</b><span> · dès 195€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
+    </div>
+    <div class="car-nav"><button onclick="scrollTrack('reelsTrack',-1)">‹</button><button onclick="scrollTrack('reelsTrack',1)">›</button></div>
+  </div>
+</section>
+
+<!-- 12 footer -->
+<footer id="commander">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-logo">FARA<span>MAYA</span> <em style="font-style:normal;font-size:13px;letter-spacing:.36em;color:var(--muted)">HAIR</em></div>
+      <p style="margin-top:14px">Maison de mèches indiennes Raw premium. Pour celles qui ne transigent pas.</p>
+      <a href="https://wa.me/33XXXXXXXXX" class="btn btn-gold" style="margin-top:8px">Commander sur WhatsApp</a>
+    </div>
+    <div><h5>Aide &amp; Support</h5><a href="#action">FAQ</a><a href="https://wa.me/33XXXXXXXXX">Contact</a><a href="#">Livraison &amp; retours</a><a href="#">Suivi de commande</a></div>
+    <div><h5>À propos</h5><a href="#goeasy">Notre histoire</a><a href="#collection">Cheveu 100% Raw</a><a href="#teintes">Guide teintes</a><a href="#bestsellers">Best-sellers</a></div>
+    <div>
+      <h5>Restez informée</h5>
+      <p>−10% sur votre 1ʳᵉ commande &amp; nos nouveautés.</p>
+      <div class="news"><input type="email" placeholder="Votre e-mail"><button class="btn btn-gold">OK</button></div>
+      <div class="pay-icons"><span>CB</span><span>Visa</span><span>Mastercard</span><span>Amex</span><span>2-3×</span><span>Espèces</span><span>Apple&nbsp;Pay</span><span>Google&nbsp;Pay</span></div>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Faramaya Hair. Tous droits réservés.</span>
+    <span>Paiement : CB · 2-3× · espèces · WhatsApp</span>
   </div>
 </footer>
 
-<!-- ── WhatsApp floating ───────────────────────── -->
-<a href="https://wa.me/33XXXXXXXXX?text=Bonjour%20Faramaya%2C%20j%27aimerais%20des%20conseils." class="wa-float" aria-label="Contacter sur WhatsApp">
-  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M.057 24l1.687-6.163A11.867 11.867 0 010 5.945C0 2.664 2.66 0 5.94 0a11.94 11.94 0 018.413 3.488 11.86 11.86 0 013.48 8.413c0 6.554-5.34 11.89-11.89 11.89a11.86 11.86 0 01-5.682-1.45L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.003-5.462-4.415-9.89-9.881-9.892C6.6 1.999 2.165 6.439 2.169 11.889c.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.738-.978zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.173.198-.297.297-.495.099-.198.05-.371-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.371-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
-</a>
+<a class="wa" href="https://wa.me/33XXXXXXXXX?text=Bonjour%20Faramaya%2C%20j%27aimerais%20des%20conseils." aria-label="WhatsApp">✆</a>
 
-<script src="script.js"></script>
+<script>
+function scrollTrack(id,dir){var t=document.getElementById(id);t.scrollBy({left:dir*340,behavior:'smooth'});}
+</script>
 </body>
 </html>
