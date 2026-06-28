@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FARAMAYA HAIR — Mèches indiennes Raw premium</title>
+<link rel="icon" type="image/png" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/9ad7c963-1390-434b-b6f0-b5ee5243370f.png">
+<link rel="apple-touch-icon" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/9ad7c963-1390-434b-b6f0-b5ee5243370f.png">
 <meta name="description" content="Mèches 100% Raw, collectées d'une seule donatrice, jamais traitées. Lisse, wavy, curly, bob, kinky. Densité réelle, brillance durable. Livraison 72h, paiement flexible.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -165,6 +167,59 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
 .foot-bottom{border-top:1px solid var(--line);margin-top:46px;padding-top:22px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);letter-spacing:.05em;flex-wrap:wrap;gap:10px}
 
 .wa{position:fixed;right:22px;bottom:22px;z-index:60;background:#1f9e54;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(0,0,0,.4);font-size:24px}
+.logo img{height:48px;width:auto;display:block}
+.foot-logo img{height:60px;width:auto;display:block}
+.tabs{display:flex;justify-content:center;gap:10px;margin:30px 0 6px}
+.tab-btn{font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:13px 32px;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;border-radius:2px;transition:.25s}
+.tab-btn.active{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#241019;border-color:transparent}
+.tab-meta{font-size:13px;color:var(--muted);margin:10px auto 0;max-width:700px}
+.tab-pane{display:none}.tab-pane.active{display:block}
+.col-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
+.col-grid.two{grid-template-columns:repeat(2,1fr);max-width:780px;margin:34px auto 0}
+.col{position:relative;border-radius:3px;overflow:hidden;border:1px solid var(--line);min-height:440px;display:flex}
+.col>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.6s}
+.col:hover>img{transform:scale(1.05)}
+.col .ov{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 20px;background:linear-gradient(to top,rgba(18,7,12,.95) 14%,rgba(18,7,12,.05) 62%);text-align:left}
+.col h3{font-family:var(--serif);font-size:26px;font-weight:500}
+.col .size{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);margin:4px 0 12px}
+.col ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;padding:0}
+.col ul li{font-size:12px;color:var(--cream);border:1px solid var(--line);border-radius:30px;padding:4px 11px}
+.col ul li.star{border-color:var(--gold);color:var(--gold-2)}
+.col .btn{width:100%;justify-content:center}
+.config{max-width:880px;margin:0 auto;border:1px solid var(--line);border-radius:4px;background:var(--plum-3);padding:30px 28px 30px;text-align:left}
+.config h4{font-family:var(--serif);font-size:26px;font-weight:500;margin-bottom:4px;text-align:center}
+.config .sub{font-size:13px;color:var(--muted);text-align:center;margin-bottom:22px}
+.cfg-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.cfg-row .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);min-width:92px}
+.chip{font-size:13px;color:var(--cream);border:1px solid var(--line);border-radius:30px;padding:8px 16px;cursor:pointer;transition:.2s;background:none;font-family:var(--sans)}
+.chip:hover{border-color:var(--gold)}
+.chip.on{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#241019;border-color:transparent;font-weight:500}
+.config .btn{margin-top:14px;width:100%;justify-content:center}
+.cfg-lead{font-size:16px;color:var(--cream);opacity:.9;max-width:640px;margin:14px auto 0}
+.steps{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin:34px auto 0;padding:13px 26px;border:1px solid var(--line);border-radius:40px;width:fit-content;background:rgba(46,20,34,.45)}
+.step{display:flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream)}
+.step-n{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#241019;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:var(--sans)}
+.step-sep{color:var(--gold);font-size:15px}
+.cfg-card{display:grid;grid-template-columns:1.15fr .85fr;margin-top:36px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--plum-3);text-align:left}
+.cfg-left{padding:32px 30px}
+.cfg-right{padding:30px 28px;background:linear-gradient(180deg,rgba(26,10,18,.55),rgba(46,20,34,.45));border-left:1px solid var(--line)}
+.cfg-field{margin-bottom:20px}
+.cfg-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:0}
+.cfg-row .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);min-width:84px}
+.cfg-help{font-size:12px;color:var(--muted);margin:9px 0 0;line-height:1.5;font-style:italic}
+.preview-head h4{font-family:var(--serif);font-size:22px;font-weight:500}
+.preview-head p{font-size:12px;color:var(--muted);margin-bottom:14px}
+.preview-img{border-radius:4px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;background:var(--plum-2)}
+.preview-img img{width:100%;height:100%;object-fit:cover;transition:opacity .4s ease, filter .4s ease}
+.preview-note{font-size:11px;color:var(--rose);margin-top:10px;line-height:1.5}
+.summary{margin-top:22px;padding:16px 18px;border:1px dashed var(--line);border-radius:4px;background:rgba(18,7,12,.4)}
+.sum-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.sum-text{font-family:var(--serif);font-size:17px;color:var(--cream);margin-top:6px;line-height:1.55}
+.cfg-cta{width:100%;justify-content:center;margin-top:18px;font-size:13px}
+.reassure{font-size:12px;color:var(--gold-2);text-align:center;margin-top:12px;letter-spacing:.03em;line-height:1.6}
+@media(max-width:980px){.col-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:880px){.cfg-card{grid-template-columns:1fr}.cfg-right{border-left:none;border-top:1px solid var(--line);order:-1}.preview-img{aspect-ratio:16/11}}
+@media(max-width:560px){.col-grid,.col-grid.two{grid-template-columns:1fr}.tabs{flex-wrap:wrap}.logo img{height:40px}.cfg-left,.cfg-right{padding:24px 20px}.steps{gap:10px;padding:12px 16px}.step{font-size:11px}}
 
 @media(max-width:980px){
   .wrap{padding:0 18px}
@@ -213,7 +268,7 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
 <!-- 2 -->
 <header>
   <div class="wrap nav">
-    <a href="#top" class="logo">FARA<span>MAYA</span><em style="font-style:normal;font-size:13px;letter-spacing:.36em;color:var(--muted);margin-left:9px">HAIR</em></a>
+    <a href="#top" class="logo"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/03a51b67-aaa6-424c-8653-7306e2a0af9c.png" alt="Faramaya Hair"></a>
     <nav class="menu">
       <a href="#collection">Boutique</a>
       <a href="#collection">Textures</a>
@@ -265,30 +320,66 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
   <a class="tile" href="#bestsellers"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/769f7b8d-8eeb-43c1-aff0-ea32946f7961.png" alt="Best-sellers"><div class="tl"><h3>Best-sellers</h3><p>2 achetées = −50% sur la 2ᵉ</p><span class="btn btn-ghost">Acheter</span></div></a>
 </div>
 
-<!-- 6 collection -->
+<!-- 6 catalogue -->
 <section class="block" id="collection">
   <div class="wrap center">
-    <span class="eyebrow">Acheter par texture</span>
-    <h2 class="title">Notre <em>collection</em></h2>
-    <div class="cat-grid">
-      <div class="cat"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/da787040-8e02-406a-acd8-dc245cffbc10.png" alt="Mèche lisse"><div class="ov"><h3>Lisse</h3><span>Lissage intégral</span><a href="#bestsellers" class="btn btn-gold">Acheter</a></div></div>
-      <div class="cat"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/624a4077-0fc0-46ac-812e-fb9aa49e29a0.png" alt="Mèche ondulée"><div class="ov"><h3>Ondulé</h3><span>Ondulation naturelle</span><a href="#bestsellers" class="btn btn-gold">Acheter</a></div></div>
-      <div class="cat"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/294e5554-7169-435e-9c64-18fdf2c73591.png" alt="Mèche bouclée"><div class="ov"><h3>Bouclé</h3><span>Boucle profonde</span><a href="#bestsellers" class="btn btn-gold">Acheter</a></div></div>
-      <div class="cat"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3a2bc7bc-ab5a-4543-abd6-0a1e0bb925a5.png" alt="Carré lace"><div class="ov"><h3>Carré</h3><span>Carré lace</span><a href="#bestsellers" class="btn btn-gold">Acheter</a></div></div>
-      <div class="cat"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/2e8677b4-1c26-4eb3-99c8-0380fbb00086.png" alt="Mèche crépue lissée"><div class="ov"><h3>Crépu lissé</h3><span>Texture afro</span><a href="#bestsellers" class="btn btn-gold">Acheter</a></div></div>
+    <span class="eyebrow">Notre catalogue</span>
+    <h2 class="title">Perruques &amp; <em>Tissages</em></h2>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="perruques">Perruques</button>
+      <button class="tab-btn" data-tab="tissages">Tissages</button>
+    </div>
+
+    <div class="tab-pane active" id="tab-perruques">
+      <p class="tab-meta">Tailles 8–28" · Origines Indien · Vietnamien · Burmese · Grade SDD ou DD · Closure HD ou normale</p>
+      <div class="col-grid two">
+        <div class="col"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/da787040-8e02-406a-acd8-dc245cffbc10.png" alt="Perruque lisse"><div class="ov"><h3>Lisse</h3><div class="size">Bone Straight · 8–28"</div><ul><li>Bone Straight</li><li>Closure HD</li><li>Closure normale</li></ul><a href="#fit" class="btn btn-gold">Configurer</a></div></div>
+        <div class="col"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/294e5554-7169-435e-9c64-18fdf2c73591.png" alt="Perruque bouclée"><div class="ov"><h3>Bouclé</h3><div class="size">8–28"</div><ul><li>Afro Kinky</li><li>Kinky Curl</li><li>Deep Wave</li><li>Body Wave</li></ul><a href="#fit" class="btn btn-gold">Configurer</a></div></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-tissages">
+      <p class="tab-meta">Mèches à coudre · cheveu Raw · grades SDD / DD</p>
+      <div class="col-grid">
+        <div class="col"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/da787040-8e02-406a-acd8-dc245cffbc10.png" alt="Tissage straight"><div class="ov"><h3>Straight</h3><div class="size">8–30"</div><ul><li>Bone Straight</li></ul><a href="#fit" class="btn btn-gold">Configurer</a></div></div>
+        <div class="col"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/624a4077-0fc0-46ac-812e-fb9aa49e29a0.png" alt="Tissage wave"><div class="ov"><h3>Wave</h3><div class="size">8–28"</div><ul><li class="star">Body Wave ★</li><li>Loose Wave</li><li>Deep Wave</li><li>Body Twist</li><li>Body Tip Twist</li></ul><a href="#fit" class="btn btn-gold">Configurer</a></div></div>
+        <div class="col"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/294e5554-7169-435e-9c64-18fdf2c73591.png" alt="Tissage curly"><div class="ov"><h3>Curly</h3><div class="size">8–20"</div><ul><li>Fumi</li><li>Bouncy</li><li>Circle</li><li>Round Twist</li><li>Pixie</li><li>Deep Twist · 8–28"</li><li>Finger</li></ul><a href="#fit" class="btn btn-gold">Configurer</a></div></div>
+        <div class="col"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/2e8677b4-1c26-4eb3-99c8-0380fbb00086.png" alt="Tissage afro"><div class="ov"><h3>Afro</h3><div class="size">8–30"</div><ul><li>Afro Kinky</li><li>Kinky Curl</li><li>Yaki Straight</li></ul><a href="#fit" class="btn btn-gold">Configurer</a></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 7 find your fit -->
-<section class="fit" id="fit">
-  <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/294e5554-7169-435e-9c64-18fdf2c73591.png" alt="Trouvez votre style Faramaya">
-  <div class="fc">
-    <span class="eyebrow">Trouvez votre style</span>
-    <h2 class="title">Votre texture, votre teinte, <em>votre longueur.</em></h2>
-    <div class="hero-cta">
-      <a href="#teintes" class="btn btn-gold">La teinte signature</a>
-      <a href="#commander" class="btn btn-ghost">Conseil sur WhatsApp</a>
+<!-- 7 configurateur -->
+<section class="block" id="fit" style="background:var(--plum-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow">Composez votre commande</span>
+      <h2 class="title">Créez votre chevelure <em>sur mesure</em></h2>
+      <p class="cfg-lead">Sélectionnez vos préférences et visualisez votre rendu avant de recevoir un devis personnalisé sur WhatsApp.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span> Personnalisez</div>
+      <span class="step-sep">→</span>
+      <div class="step"><span class="step-n">2</span> Visualisez</div>
+      <span class="step-sep">→</span>
+      <div class="step"><span class="step-n">3</span> Recevez votre devis</div>
+    </div>
+    <div class="cfg-card">
+      <div class="cfg-left" id="cfgFields"></div>
+      <div class="cfg-right">
+        <div class="preview">
+          <div class="preview-head"><h4>Aperçu du rendu</h4><p>Visualisation indicative selon vos choix</p></div>
+          <div class="preview-img"><img id="previewImg" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/716b068c-2eff-465d-8807-342f3d0045f9.png" alt="Aperçu du rendu"></div>
+          <p class="preview-note">Le rendu final peut varier selon la densité, la pose et la personnalisation.</p>
+        </div>
+        <div class="summary">
+          <span class="sum-label">Votre sélection</span>
+          <p id="summaryText" class="sum-text"></p>
+        </div>
+        <a id="waBtn" href="#" target="_blank" rel="noopener" class="btn btn-gold cfg-cta">Recevoir mon devis sur WhatsApp</a>
+        <p class="reassure">Réponse personnalisée sous 24h · Conseil adapté à votre besoin · Sans engagement</p>
+      </div>
     </div>
   </div>
 </section>
@@ -344,8 +435,6 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
       <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152037_e53c1b52-ad8d-4c12-96ab-c094b7cd28a7.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/624a4077-0fc0-46ac-812e-fb9aa49e29a0.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Ondulé naturel</b><span> · dès 185€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
       <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152046_86d5bbd6-986c-4e68-afd0-e428b62ec78c.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/daad1070-a64d-4ea2-8874-752d4fe5e336.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Bouclé</b><span> · coucher de soleil</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
       <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152039_707c0c0e-7fc3-4996-a9ce-aa012aa80faf.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/294e5554-7169-435e-9c64-18fdf2c73591.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Boucle profonde</b><span> · dès 190€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
-      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152203_4e49ab17-881a-4c8c-a751-253e4aa414a8.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/2e525e2a-2f97-4a00-ac0d-78aaa3c4c3f6.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Carré bouclé</b><span> · salon</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
-      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152040_02ca5f09-633b-465b-97c4-662b726e2c93.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3a2bc7bc-ab5a-4543-abd6-0a1e0bb925a5.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Carré lace</b><span> · dès 160€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
       <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152044_8b4dbb63-1306-4d5d-82d4-25458ea2008b.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/4bfc85b2-c287-4caf-a3ec-76b79a2edba5.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Lisse</b><span> · lifestyle</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
       <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152042_15bbd53d-7eb4-41e1-9bc3-37dcc368d93d.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/2e8677b4-1c26-4eb3-99c8-0380fbb00086.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Crépu lissé</b><span> · dès 195€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
     </div>
@@ -357,7 +446,7 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
 <footer id="commander">
   <div class="wrap foot-grid">
     <div>
-      <div class="foot-logo">FARA<span>MAYA</span> <em style="font-style:normal;font-size:13px;letter-spacing:.36em;color:var(--muted)">HAIR</em></div>
+      <div class="foot-logo"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/03a51b67-aaa6-424c-8653-7306e2a0af9c.png" alt="Faramaya Hair"></div>
       <p style="margin-top:14px">Maison de mèches indiennes Raw premium. Pour celles qui ne transigent pas.</p>
       <a href="https://wa.me/33XXXXXXXXX" class="btn btn-gold" style="margin-top:8px">Commander sur WhatsApp</a>
     </div>
@@ -381,6 +470,93 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
 <script>
 function scrollTrack(id,dir){var t=document.getElementById(id);t.scrollBy({left:dir*340,behavior:'smooth'});}
 document.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('header').classList.remove('open');});});
+document.querySelectorAll('.tab-btn').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active');});
+  document.querySelectorAll('.tab-pane').forEach(function(x){x.classList.remove('active');});
+  b.classList.add('active'); document.getElementById('tab-'+b.dataset.tab).classList.add('active');
+});});
+
+/* ===== Configurateur Faramaya ===== */
+(function(){
+  var whatsappNumber = "33600000000"; // <-- numéro WhatsApp à remplacer
+
+  var fields = [
+    {key:'type',     label:'Type',     options:[{v:'Perruque'},{v:'Tissage'}]},
+    {key:'origine',  label:'Origine',  options:[{v:'Indien'},{v:'Vietnamien'},{v:'Burmese'}]},
+    {key:'grade',    label:'Grade',    options:[{v:'SDD'},{v:'DD'}], help:'SDD : qualité premium, cheveux plus épais et durables. · DD : qualité standard supérieure.'},
+    {key:'closure',  label:'Closure',  options:[{v:'HD'},{v:'Normale'}], help:'HD : finition plus invisible et naturelle. · Normale : finition classique.'},
+    {key:'texture',  label:'Texture',  options:[{v:'Bone Straight',k:'boneStraight'},{v:'Body Wave',k:'bodyWave'},{v:'Deep Wave',k:'deepWave'},{v:'Afro Kinky',k:'afroKinky'},{v:'Kinky Curl',k:'kinkyCurl'},{v:'Yaki Straight',k:'yakiStraight'}]},
+    {key:'taille',   label:'Taille',   options:[{v:'8"'},{v:'12"'},{v:'16"'},{v:'20"'},{v:'24"'},{v:'28"'},{v:'30"'}], help:'Les longueurs élevées donnent un rendu plus glamour et volumineux.'},
+    {key:'couleur',  label:'Couleur',  options:[{v:'Naturel noir'},{v:'Brun'},{v:'Blond'},{v:'Autre sur demande'}]},
+    {key:'quantite', label:'Quantité', options:[{v:'1 pack'},{v:'2 packs'},{v:'3 packs'},{v:'4 packs'}], help:'Conseil : 2 packs pour un rendu naturel, 3 à 4 packs pour plus de volume.'}
+  ];
+
+  var state = {type:'Perruque',origine:'Indien',grade:'SDD',closure:'HD',texture:'Bone Straight',taille:'16"',couleur:'Naturel noir',quantite:'2 packs'};
+
+  var previewImages = {
+    boneStraight:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/716b068c-2eff-465d-8807-342f3d0045f9.png',
+    bodyWave:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/154335b1-23af-4cea-8eab-df7b831726ce.png',
+    deepWave:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/73647be3-67fd-4ae9-975a-67bf8b5f42f4.png',
+    afroKinky:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/d558331a-6762-4211-a2a5-d1b1f4987608.png',
+    kinkyCurl:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/8e3e7a5f-a0cc-4b46-a983-0beec26d6fdc.png',
+    yakiStraight:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/00ff0d02-e88e-477c-803a-fdc087b87973.png'
+  };
+  var defaultPreview = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/716b068c-2eff-465d-8807-342f3d0045f9.png';
+  var colorFilters = {
+    'Naturel noir':'none',
+    'Brun':'sepia(.32) saturate(1.15) brightness(1.05) hue-rotate(-8deg)',
+    'Blond':'sepia(.55) saturate(1.2) brightness(1.32)',
+    'Autre sur demande':'none'
+  };
+
+  var container = document.getElementById('cfgFields');
+  if(!container) return;
+
+  fields.forEach(function(f){
+    var field=document.createElement('div'); field.className='cfg-field';
+    var row=document.createElement('div'); row.className='cfg-row';
+    var lbl=document.createElement('span'); lbl.className='lbl'; lbl.textContent=f.label; row.appendChild(lbl);
+    f.options.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='chip'+(state[f.key]===o.v?' on':'');
+      b.textContent=o.v;
+      b.addEventListener('click',function(){
+        state[f.key]=o.v;
+        row.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on');
+        update();
+      });
+      row.appendChild(b);
+    });
+    field.appendChild(row);
+    if(f.help){var h=document.createElement('p'); h.className='cfg-help'; h.textContent=f.help; field.appendChild(h);}
+    container.appendChild(field);
+  });
+
+  function textureKey(){
+    var opt=fields.find(function(f){return f.key==='texture';}).options.find(function(o){return o.v===state.texture;});
+    return opt?opt.k:null;
+  }
+  function update(){
+    // preview
+    var img=document.getElementById('previewImg');
+    var src=previewImages[textureKey()]||defaultPreview;
+    if(img){
+      if(img.getAttribute('src')!==src){img.style.opacity='0';setTimeout(function(){img.src=src;img.style.opacity='1';},180);}
+      img.style.filter=colorFilters[state.couleur]||'none';
+    }
+    // summary
+    var order=['type','origine','grade','closure','texture','taille','couleur','quantite'];
+    var sum=order.map(function(k){return state[k];}).join(' · ');
+    var st=document.getElementById('summaryText'); if(st) st.textContent=sum;
+    // whatsapp
+    var msg='Bonjour Faramaya Hair,\n\nJe souhaite recevoir un devis pour cette configuration :\n\n'+
+      'Type : '+state.type+'\nOrigine : '+state.origine+'\nGrade : '+state.grade+'\nClosure : '+state.closure+
+      '\nTexture : '+state.texture+'\nTaille : '+state.taille+'\nCouleur : '+state.couleur+'\nQuantité : '+state.quantite+'\n\nMerci.';
+    var wa=document.getElementById('waBtn');
+    if(wa) wa.href='https://wa.me/'+whatsappNumber+'?text='+encodeURIComponent(msg);
+  }
+  update();
+})();
 </script>
 </body>
 </html>
