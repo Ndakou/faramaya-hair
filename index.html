@@ -212,11 +212,33 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
 .preview-img{border-radius:4px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;background:var(--plum-2)}
 .preview-img img{width:100%;height:100%;object-fit:cover;transition:opacity .4s ease, filter .4s ease}
 .preview-note{font-size:11px;color:var(--rose);margin-top:10px;line-height:1.5}
+.pv-toggle{display:inline-flex;gap:6px;margin:10px 0 12px}
+.pv-btn{font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;border-radius:30px;transition:.2s;font-family:var(--sans)}
+.pv-btn.on{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#241019;border-color:transparent}
+#previewBox{position:relative;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--plum-2);aspect-ratio:3/4.3}
+#previewBox img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:opacity .25s ease,height .4s ease}
+.pv-size{position:absolute;right:10px;bottom:10px;background:rgba(18,7,12,.82);border:1px solid var(--line);color:var(--gold-2);font-size:12px;letter-spacing:.08em;padding:4px 11px;border-radius:30px}
 .summary{margin-top:22px;padding:16px 18px;border:1px dashed var(--line);border-radius:4px;background:rgba(18,7,12,.4)}
 .sum-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 .sum-text{font-family:var(--serif);font-size:17px;color:var(--cream);margin-top:6px;line-height:1.55}
 .cfg-cta{width:100%;justify-content:center;margin-top:18px;font-size:13px}
 .reassure{font-size:12px;color:var(--gold-2);text-align:center;margin-top:12px;letter-spacing:.03em;line-height:1.6}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.rev{background:var(--plum-2);border:1px solid var(--line);border-radius:4px;padding:28px 24px}
+.rev .stars{color:var(--gold);letter-spacing:3px;font-size:15px}
+.rev p{font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--cream);margin:14px 0 14px;font-style:italic}
+.rev-by{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-2)}
+.faq{max-width:760px;margin:36px auto 0}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:none;color:var(--cream);font-family:var(--serif);font-size:19px;text-align:left;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq-q span{color:var(--gold);font-size:24px;transition:.3s;flex-shrink:0}
+.faq-item.open .faq-q span{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:260px}
+.faq-a p{color:var(--muted);font-size:15px;line-height:1.6;padding:0 0 20px}
+.final-cta{padding:90px 0;text-align:center;background:radial-gradient(110% 130% at 50% 0%,rgba(73,30,52,.85),var(--plum) 70%);border-top:1px solid var(--line)}
+.final-cta p{max-width:520px;margin:14px auto 28px;color:var(--cream);opacity:.9}
+@media(max-width:880px){.reviews{grid-template-columns:1fr}}
 @media(max-width:980px){.col-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:880px){.cfg-card{grid-template-columns:1fr}.cfg-right{border-left:none;border-top:1px solid var(--line);order:-1}.preview-img{aspect-ratio:16/11}}
 @media(max-width:560px){.col-grid,.col-grid.two{grid-template-columns:1fr}.tabs{flex-wrap:wrap}.logo img{height:40px}.cfg-left,.cfg-right{padding:24px 20px}.steps{gap:10px;padding:12px 16px}.step{font-size:11px}}
@@ -278,7 +300,7 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
     </nav>
     <div class="nav-icons">
       <a href="#fit" class="nav-search">Recherche</a>
-      <a href="#commander" class="btn btn-gold" style="padding:10px 20px">Commander</a>
+      <a href="commande.html" class="btn btn-gold" style="padding:10px 20px">Commander</a>
       <div class="burger" onclick="document.querySelector('header').classList.toggle('open')"><span></span><span></span><span></span></div>
     </div>
   </div>
@@ -369,9 +391,10 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
       <div class="cfg-left" id="cfgFields"></div>
       <div class="cfg-right">
         <div class="preview">
-          <div class="preview-head"><h4>Aperçu du rendu</h4><p>Visualisation indicative selon vos choix</p></div>
-          <div class="preview-img"><img id="previewImg" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/716b068c-2eff-465d-8807-342f3d0045f9.png" alt="Aperçu du rendu"></div>
-          <p class="preview-note">Le rendu final peut varier selon la densité, la pose et la personnalisation.</p>
+          <div class="preview-head"><h4>Aperçu du rendu</h4></div>
+          <div class="pv-toggle"><button type="button" class="pv-btn on" data-mode="texture">La mèche</button><button type="button" class="pv-btn" data-mode="mannequin">Sur mannequin</button></div>
+          <div class="preview-img" id="previewBox"><img id="previewImg" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/5f98e681-a6a0-492f-8569-b28bc5b2f902.png" alt="Aperçu du rendu"><span class="pv-size" id="pvSize">16"</span></div>
+          <p class="preview-note">Visualisation indicative — le rendu final varie selon la densité, la pose et la personnalisation.</p>
         </div>
         <div class="summary">
           <span class="sum-label">Votre sélection</span>
@@ -384,29 +407,17 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
   </div>
 </section>
 
-<!-- 8 teinte signature -->
-<section class="block center" id="teintes">
-  <div class="wrap">
-    <span class="eyebrow">La teinte signature</span>
-    <h2 class="title">Le <em>noir naturel</em>, à l'état pur.</h2>
-    <div class="shades">
-      <div class="shade-item"><div class="dot" style="background:radial-gradient(circle at 38% 30%,#33291f,#120a08 72%);width:120px;height:120px"></div><span>Noir naturel · 1B</span></div>
-    </div>
-    <p style="max-width:580px;margin:24px auto 0;color:var(--muted);font-size:15px">Une seule teinte, parce que le vrai luxe tient dans la matière brute : un cheveu Raw jamais coloré, brillance profonde et noir authentique. Envie d'une couleur sur mesure ? Le cheveu Raw se colore parfaitement chez un coloriste professionnel.</p>
-  </div>
-</section>
-
 <!-- 9 bestsellers carousel -->
 <section class="block" id="bestsellers" style="background:var(--plum-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="center"><span class="eyebrow">Les plus adoptées</span><h2 class="title">Nos <em>best-sellers</em></h2></div>
     <div class="carousel">
       <div class="car-track" id="bestTrack">
-        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/a987f7b6-11f9-4473-9f20-c4b6747c89eb.png" alt="Mèche lisse"><span class="sale">−10%</span></div><div class="pb"><h3>Lisse — Lissage intégral</h3><div class="pr">dès 175€ <small>195€</small></div><div class="ex">prix exemple</div><a href="#commander" class="btn btn-gold">Ajout rapide</a></div></div>
-        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/769f7b8d-8eeb-43c1-aff0-ea32946f7961.png" alt="Mèche ondulée"></div><div class="pb"><h3>Ondulé — Ondulation naturelle</h3><div class="pr">dès 185€</div><div class="ex">prix exemple</div><a href="#commander" class="btn btn-gold">Ajout rapide</a></div></div>
-        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/fc2e64d7-ac0f-4b4f-91e8-7a57719d3c9e.png" alt="Mèche crépue lissée"><span class="sale">Afro</span></div><div class="pb"><h3>Crépu lissé</h3><div class="pr">dès 195€</div><div class="ex">prix exemple</div><a href="#commander" class="btn btn-gold">Ajout rapide</a></div></div>
-        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3534e3a4-a4a6-4c59-b816-0225a145e2c7.png" alt="Pack closure + mèches"></div><div class="pb"><h3>Pack Closure + 3 Mèches</h3><div class="pr">dès 520€</div><div class="ex">prix exemple</div><a href="#commander" class="btn btn-gold">Ajout rapide</a></div></div>
-        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/1fbe65f0-3f75-4b81-a26d-d25f97d075fa.png" alt="Lisse premium"></div><div class="pb"><h3>Lisse Premium 30"</h3><div class="pr">dès 240€</div><div class="ex">prix exemple</div><a href="#commander" class="btn btn-gold">Ajout rapide</a></div></div>
+        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/a987f7b6-11f9-4473-9f20-c4b6747c89eb.png" alt="Mèche lisse"><span class="sale">−10%</span></div><div class="pb"><h3>Lisse — Lissage intégral</h3><div class="pr">dès 175€ <small>195€</small></div><div class="ex">prix exemple</div><a href="commande.html" class="btn btn-gold">Ajout rapide</a></div></div>
+        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/769f7b8d-8eeb-43c1-aff0-ea32946f7961.png" alt="Mèche ondulée"></div><div class="pb"><h3>Ondulé — Ondulation naturelle</h3><div class="pr">dès 185€</div><div class="ex">prix exemple</div><a href="commande.html" class="btn btn-gold">Ajout rapide</a></div></div>
+        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/fc2e64d7-ac0f-4b4f-91e8-7a57719d3c9e.png" alt="Mèche crépue lissée"><span class="sale">Afro</span></div><div class="pb"><h3>Crépu lissé</h3><div class="pr">dès 195€</div><div class="ex">prix exemple</div><a href="commande.html" class="btn btn-gold">Ajout rapide</a></div></div>
+        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3534e3a4-a4a6-4c59-b816-0225a145e2c7.png" alt="Pack closure + mèches"></div><div class="pb"><h3>Pack Closure + 3 Mèches</h3><div class="pr">dès 520€</div><div class="ex">prix exemple</div><a href="commande.html" class="btn btn-gold">Ajout rapide</a></div></div>
+        <div class="pcard"><div class="ph"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/1fbe65f0-3f75-4b81-a26d-d25f97d075fa.png" alt="Lisse premium"></div><div class="pb"><h3>Lisse Premium 30"</h3><div class="pr">dès 240€</div><div class="ex">prix exemple</div><a href="commande.html" class="btn btn-gold">Ajout rapide</a></div></div>
       </div>
       <div class="car-nav"><button onclick="scrollTrack('bestTrack',-1)">‹</button><button onclick="scrollTrack('bestTrack',1)">›</button></div>
     </div>
@@ -430,15 +441,51 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
   <div class="wrap">
     <div class="center"><span class="eyebrow">Elles l'ont adoptée</span><h2 class="title">Vu <em>en action</em></h2></div>
     <div class="reels-track" id="reelsTrack">
-      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152035_7a07f82a-3e87-4f85-bf75-3dec35bd3af9.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/da787040-8e02-406a-acd8-dc245cffbc10.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Lisse</b><span> · dès 175€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
-      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152206_9e048239-728f-42bd-b894-44faa2c9b257.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/59697c69-f79f-4d8b-88f1-8a14ca5315dd.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Ondulé</b><span> · studio</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
-      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152037_e53c1b52-ad8d-4c12-96ab-c094b7cd28a7.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/624a4077-0fc0-46ac-812e-fb9aa49e29a0.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Ondulé naturel</b><span> · dès 185€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
-      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152046_86d5bbd6-986c-4e68-afd0-e428b62ec78c.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/daad1070-a64d-4ea2-8874-752d4fe5e336.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Bouclé</b><span> · coucher de soleil</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
-      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152039_707c0c0e-7fc3-4996-a9ce-aa012aa80faf.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/294e5554-7169-435e-9c64-18fdf2c73591.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Boucle profonde</b><span> · dès 190€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
-      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152044_8b4dbb63-1306-4d5d-82d4-25458ea2008b.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/4bfc85b2-c287-4caf-a3ec-76b79a2edba5.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Lisse</b><span> · lifestyle</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
-      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152042_15bbd53d-7eb4-41e1-9bc3-37dcc368d93d.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/2e8677b4-1c26-4eb3-99c8-0380fbb00086.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Crépu lissé</b><span> · dès 195€</span></div><a href="#commander" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152035_7a07f82a-3e87-4f85-bf75-3dec35bd3af9.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/da787040-8e02-406a-acd8-dc245cffbc10.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Lisse</b><span> · dès 175€</span></div><a href="commande.html" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152206_9e048239-728f-42bd-b894-44faa2c9b257.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/59697c69-f79f-4d8b-88f1-8a14ca5315dd.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Ondulé</b><span> · studio</span></div><a href="commande.html" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152037_e53c1b52-ad8d-4c12-96ab-c094b7cd28a7.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/624a4077-0fc0-46ac-812e-fb9aa49e29a0.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Ondulé naturel</b><span> · dès 185€</span></div><a href="commande.html" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152046_86d5bbd6-986c-4e68-afd0-e428b62ec78c.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/daad1070-a64d-4ea2-8874-752d4fe5e336.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Bouclé</b><span> · coucher de soleil</span></div><a href="commande.html" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152039_707c0c0e-7fc3-4996-a9ce-aa012aa80faf.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/294e5554-7169-435e-9c64-18fdf2c73591.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Boucle profonde</b><span> · dès 190€</span></div><a href="commande.html" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152044_8b4dbb63-1306-4d5d-82d4-25458ea2008b.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/4bfc85b2-c287-4caf-a3ec-76b79a2edba5.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Lisse</b><span> · lifestyle</span></div><a href="commande.html" class="ad">Voir</a></div></div></div>
+      <div class="reel"><div class="rv"><video src="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/hf_20260626_152042_15bbd53d-7eb4-41e1-9bc3-37dcc368d93d.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/2e8677b4-1c26-4eb3-99c8-0380fbb00086.png" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video><div class="tag"><div><b>Crépu lissé</b><span> · dès 195€</span></div><a href="commande.html" class="ad">Voir</a></div></div></div>
     </div>
     <div class="car-nav"><button onclick="scrollTrack('reelsTrack',-1)">‹</button><button onclick="scrollTrack('reelsTrack',1)">›</button></div>
+  </div>
+</section>
+
+<!-- Avis clients -->
+<section class="block" id="avis">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">Elles témoignent</span><h2 class="title">La confiance de <em>nos clientes</em></h2></div>
+    <div class="reviews">
+      <div class="rev"><div class="stars">★★★★★</div><p>« Densité incroyable, le rendu est ultra naturel. On dirait mes vrais cheveux. »</p><span class="rev-by">— Aïcha M.</span></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>« Le configurateur m'a permis de choisir exactement ce que je voulais. Service au top. »</p><span class="rev-by">— Fatou D.</span></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>« Cheveu Raw d'une qualité rare, il dure et garde sa brillance. Je recommande. »</p><span class="rev-by">— Linda K.</span></div>
+    </div>
+    <p class="center" style="font-size:12px;color:var(--rose);margin-top:22px">Témoignages d'exemple — à remplacer par de vrais avis avant ouverture des ventes.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block" id="faq" style="background:var(--plum-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">Bon à savoir</span><h2 class="title">Questions <em>fréquentes</em></h2></div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">Quelle différence entre SDD et DD ?<span>+</span></button><div class="faq-a"><p>Le DD (Double Drawn) est épais des racines aux pointes pour une densité maximale. Le SDD reste premium, avec une chute plus naturelle vers les pointes.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Combien de packs pour une pose complète ?<span>+</span></button><div class="faq-a"><p>2 packs pour un rendu naturel, 3 à 4 packs pour plus de volume selon la longueur. Notre équipe vous conseille sur WhatsApp.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Quels délais de livraison ?<span>+</span></button><div class="faq-a"><p>Livraison suivie en 72h en France et Europe. Chaque commande est confirmée et suivie avec vous directement.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Quels moyens de paiement ?<span>+</span></button><div class="faq-a"><p>Carte bancaire, paiement en 2 ou 3 fois, espèces, ou finalisation sur WhatsApp — vous choisissez à l'étape commande.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA final -->
+<section class="final-cta">
+  <div class="wrap">
+    <span class="eyebrow">Votre chevelure vous attend</span>
+    <h2 class="title">Prête à passer <em>commande ?</em></h2>
+    <p>Composez votre pièce, choisissez votre paiement, recevez un suivi personnalisé.</p>
+    <a href="commande.html" class="btn btn-gold">Commander maintenant</a>
   </div>
 </section>
 
@@ -450,8 +497,8 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
       <p style="margin-top:14px">Maison de mèches indiennes Raw premium. Pour celles qui ne transigent pas.</p>
       <a href="https://wa.me/33XXXXXXXXX" class="btn btn-gold" style="margin-top:8px">Commander sur WhatsApp</a>
     </div>
-    <div><h5>Aide &amp; Support</h5><a href="#action">FAQ</a><a href="https://wa.me/33XXXXXXXXX">Contact</a><a href="#">Livraison &amp; retours</a><a href="#">Suivi de commande</a></div>
-    <div><h5>À propos</h5><a href="#goeasy">Notre histoire</a><a href="#collection">Cheveu 100% Raw</a><a href="#teintes">Teinte signature</a><a href="#bestsellers">Best-sellers</a></div>
+    <div><h5>Aide &amp; Support</h5><a href="#faq">FAQ</a><a href="https://wa.me/33XXXXXXXXX">Contact</a><a href="commande.html">Commander</a><a href="#avis">Avis clients</a></div>
+    <div><h5>À propos</h5><a href="#goeasy">Notre histoire</a><a href="#collection">Catalogue</a><a href="#fit">Configurateur</a><a href="#avis">Témoignages</a></div>
     <div>
       <h5>Restez informée</h5>
       <p>−10% sur votre 1ʳᵉ commande &amp; nos nouveautés.</p>
@@ -470,6 +517,11 @@ footer{background:var(--plum-2);border-top:1px solid var(--line);padding:64px 0 
 <script>
 function scrollTrack(id,dir){var t=document.getElementById(id);t.scrollBy({left:dir*340,behavior:'smooth'});}
 document.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('header').classList.remove('open');});});
+document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){
+  var it=b.parentElement;
+  document.querySelectorAll('.faq-item').forEach(function(x){if(x!==it)x.classList.remove('open');});
+  it.classList.toggle('open');
+});});
 document.querySelectorAll('.tab-btn').forEach(function(b){b.addEventListener('click',function(){
   document.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active');});
   document.querySelectorAll('.tab-pane').forEach(function(x){x.classList.remove('active');});
@@ -485,29 +537,32 @@ document.querySelectorAll('.tab-btn').forEach(function(b){b.addEventListener('cl
     {key:'origine',  label:'Origine',  options:[{v:'Indien'},{v:'Vietnamien'},{v:'Burmese'}]},
     {key:'grade',    label:'Grade',    options:[{v:'SDD'},{v:'DD'}], help:'SDD : qualité premium, cheveux plus épais et durables. · DD : qualité standard supérieure.'},
     {key:'closure',  label:'Closure',  options:[{v:'HD'},{v:'Normale'}], help:'HD : finition plus invisible et naturelle. · Normale : finition classique.'},
-    {key:'texture',  label:'Texture',  options:[{v:'Bone Straight',k:'boneStraight'},{v:'Body Wave',k:'bodyWave'},{v:'Deep Wave',k:'deepWave'},{v:'Afro Kinky',k:'afroKinky'},{v:'Kinky Curl',k:'kinkyCurl'},{v:'Yaki Straight',k:'yakiStraight'}]},
-    {key:'taille',   label:'Taille',   options:[{v:'8"'},{v:'12"'},{v:'16"'},{v:'20"'},{v:'24"'},{v:'28"'},{v:'30"'}], help:'Les longueurs élevées donnent un rendu plus glamour et volumineux.'},
-    {key:'couleur',  label:'Couleur',  options:[{v:'Naturel noir'},{v:'Brun'},{v:'Blond'},{v:'Autre sur demande'}]},
-    {key:'quantite', label:'Quantité', options:[{v:'1 pack'},{v:'2 packs'},{v:'3 packs'},{v:'4 packs'}], help:'Conseil : 2 packs pour un rendu naturel, 3 à 4 packs pour plus de volume.'}
+    {key:'texture',  label:'Texture',  options:[{v:'Bone Straight',k:'boneStraight'},{v:'Body Wave',k:'bodyWave'},{v:'Bouncy',k:'bouncy'},{v:'Fumi',k:'fumi'},{v:'Twist',k:'twist'},{v:'Tip Twist',k:'tipTwist'},{v:'Egg Twist',k:'eggTwist'},{v:'Kinky Curly',k:'kinkyCurly'},{v:'Yaki Straight',k:'yakiStraight'}]},
+    {key:'taille',   label:'Taille',   options:[{v:'8"'},{v:'10"'},{v:'12"'},{v:'14"'},{v:'16"'},{v:'18"'},{v:'20"'},{v:'22"'},{v:'24"'},{v:'26"'},{v:'28"'},{v:'30"'}], help:'Une longueur plus élevée donne un rendu plus glamour et volumineux.'},
+    {key:'couleur',  label:'Couleur',  options:[{v:'Naturel noir'},{v:'Autre sur demande'}]},
+    {key:'quantite', label:'Quantité', options:[{v:'1 pack'},{v:'2 packs'},{v:'3 packs'},{v:'4 packs'},{v:'5 packs'}], help:'Conseil : 3 packs pour un rendu naturel, 4 à 5 pour plus de volume.'}
   ];
 
-  var state = {type:'Perruque',origine:'Indien',grade:'SDD',closure:'HD',texture:'Bone Straight',taille:'16"',couleur:'Naturel noir',quantite:'2 packs'};
+  var state = {type:'Perruque',origine:'Indien',grade:'SDD',closure:'HD',texture:'Bone Straight',taille:'16"',couleur:'Naturel noir',quantite:'3 packs'};
 
-  var previewImages = {
-    boneStraight:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/716b068c-2eff-465d-8807-342f3d0045f9.png',
-    bodyWave:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/154335b1-23af-4cea-8eab-df7b831726ce.png',
-    deepWave:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/73647be3-67fd-4ae9-975a-67bf8b5f42f4.png',
-    afroKinky:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/d558331a-6762-4211-a2a5-d1b1f4987608.png',
-    kinkyCurl:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/8e3e7a5f-a0cc-4b46-a983-0beec26d6fdc.png',
-    yakiStraight:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/00ff0d02-e88e-477c-803a-fdc087b87973.png'
+  // Vue "La mèche" : tes vraies coupes (fidèles aux photos fournisseur)
+  var textureImages = {
+    boneStraight:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/5f98e681-a6a0-492f-8569-b28bc5b2f902.png', bodyWave:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/3b11a52b-f011-47e5-8d36-3e0fe9daa67d.png', bouncy:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/8831be69-9deb-4e7e-b2fd-d20bd6a8e20d.png',
+    fumi:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/ca468d65-f75e-4c32-9f0f-209fe0f03011.png', twist:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/69caae47-effa-4ae0-b3f2-6a327769841f.png', tipTwist:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/332269fb-0fda-4583-952e-83c82ace043f.png',
+    eggTwist:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/406f9262-ee73-4bd5-a19d-7f15338d36ed.png', kinkyCurly:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/24b814d4-810a-48a6-b33a-d7af916c6fe7.png', yakiStraight:'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/86f412f7-202f-4ca1-a5da-3a36089c8206.png'
   };
-  var defaultPreview = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/716b068c-2eff-465d-8807-342f3d0045f9.png';
-  var colorFilters = {
-    'Naturel noir':'none',
-    'Brun':'sepia(.32) saturate(1.15) brightness(1.05) hue-rotate(-8deg)',
-    'Blond':'sepia(.55) saturate(1.2) brightness(1.32)',
-    'Autre sur demande':'none'
+  // Vue "Sur mannequin" : mannequin IA entier, 3 longueurs par famille (court/moyen/long)
+  var V="https://d8j0ntlcm91z4.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/";
+  var mannequinTiers={
+    straight:{court:V+'hf_20260628_150107_29fe6533-f7b3-44c6-bf57-a384960c18f4.png',moyen:V+'hf_20260628_150109_e522793e-acc7-449c-8e36-1c7813488f18.png',long:V+'hf_20260628_150112_6fc433a1-465c-425f-a912-689b824ab25d.png'},
+    bodywave:{court:V+'hf_20260628_150114_f8afd66e-95e7-4648-a36d-3e1b740332dd.png',moyen:V+'hf_20260628_150132_3f4926b5-d48f-4d96-86be-975d57ad1a7a.png',long:V+'hf_20260628_150134_543a6c4e-f8d3-4386-aa27-f9510118c607.png'},
+    curly:{court:V+'hf_20260628_150137_545a83b4-d3c2-4d92-abd6-63ed75f17cd5.png',moyen:V+'hf_20260628_150139_da6af6bb-04b3-4650-8e93-9c5a85e5c451.png',long:V+'hf_20260628_150251_74108587-96fa-4866-8c61-27bf90e5b47d.png'},
+    deepwave:{court:V+'hf_20260628_150254_e41d91b4-f093-46e3-8453-b55e6aca4a74.png',moyen:V+'hf_20260628_150256_c1f90c27-e506-4bb1-9a64-d2e256f2f12c.png',long:V+'hf_20260628_150258_25105ca8-f3f2-4e11-8fd0-1582894a6e4d.png'},
+    yaki:{court:V+'hf_20260628_150411_6b501065-0975-43e1-b4ee-64661fa28eb3.png',moyen:V+'hf_20260628_150413_a42fab63-4fea-4722-a726-b96757e32012.png',long:V+'hf_20260628_150415_56c200a1-b10b-4ba1-900c-0d91946944bc.png'}
   };
+  var textureLook={boneStraight:'straight',bodyWave:'bodywave',bouncy:'curly',fumi:'deepwave',twist:'curly',tipTwist:'curly',eggTwist:'deepwave',kinkyCurly:'curly',yakiStraight:'yaki'};
+  var defaultPreview = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3EfYsdzwRq5oIOEXm3bSsTimKQL/5f98e681-a6a0-492f-8569-b28bc5b2f902.png';
+  var pvMode = 'texture';
 
   var container = document.getElementById('cfgFields');
   if(!container) return;
@@ -536,14 +591,20 @@ document.querySelectorAll('.tab-btn').forEach(function(b){b.addEventListener('cl
     var opt=fields.find(function(f){return f.key==='texture';}).options.find(function(o){return o.v===state.texture;});
     return opt?opt.k:null;
   }
+  function sizeIndex(){var vals=fields.find(function(f){return f.key==='taille';}).options.map(function(o){return o.v;});var i=vals.indexOf(state.taille);return i<0?4:i;}
+  function lengthPct(){var i=sizeIndex();return 48 + (i/11)*52;} // 8" -> 48% ... 30" -> 100%
+  function tierFor(){var i=sizeIndex(); return i<=3?'court':(i<=7?'moyen':'long');} // 8-14 / 16-22 / 24-30
+  document.querySelectorAll('.pv-btn').forEach(function(b){b.addEventListener('click',function(){
+    pvMode=b.dataset.mode; document.querySelectorAll('.pv-btn').forEach(function(x){x.classList.remove('on');}); b.classList.add('on'); update();
+  });});
   function update(){
-    // preview
-    var img=document.getElementById('previewImg');
-    var src=previewImages[textureKey()]||defaultPreview;
-    if(img){
-      if(img.getAttribute('src')!==src){img.style.opacity='0';setTimeout(function(){img.src=src;img.style.opacity='1';},180);}
-      img.style.filter=colorFilters[state.couleur]||'none';
-    }
+    // aperçu : mode (mèche / mannequin) + longueur dynamique
+    var img=document.getElementById('previewImg'); var src, hpct;
+    if(pvMode==='mannequin'){ src=mannequinTiers[textureLook[textureKey()]][tierFor()]; hpct=100; }
+    else { src=textureImages[textureKey()]||defaultPreview; hpct=lengthPct(); }
+    if(img && img.getAttribute('src')!==src){img.style.opacity='0';setTimeout(function(){img.src=src;img.style.opacity='1';},150);}
+    if(img) img.style.height=hpct+'%';
+    var pv=document.getElementById('pvSize'); if(pv) pv.textContent=state.taille;
     // summary
     var order=['type','origine','grade','closure','texture','taille','couleur','quantite'];
     var sum=order.map(function(k){return state[k];}).join(' · ');
