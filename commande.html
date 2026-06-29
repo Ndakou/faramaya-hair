@@ -281,7 +281,7 @@ footer{padding:26px 0;text-align:center;font-size:12px;color:var(--muted);letter
       ch.appendChild(b);
     });
     wrap.appendChild(ch);
-    if(f.help){var h=document.createElement('p');h.className='help';h.textContent=f.help;wrap.appendChild(h);}
+    if(f.help){var h=document.createElement('p');h.className='help';if(f.key==='taille'){h.id='tailleHelp';}h.innerHTML=f.help;wrap.appendChild(h);}
     optsBox.appendChild(wrap);
   });
 
@@ -308,6 +308,13 @@ footer{padding:26px 0;text-align:center;font-size:12px;color:var(--muted);letter
   function sizeIndex(){var vals=fields.find(function(f){return f.key==='taille';}).options.map(function(o){return o.v;});var i=vals.indexOf(state.taille);return i<0?4:i;}
   function lengthPct(){return 48+(sizeIndex()/11)*52;}
   function tierFor(){var i=sizeIndex();return i<=3?'court':(i<=7?'moyen':'long');}
+  function lengthGuide(){
+    var t=tierFor();
+    var cats=[['court','Court 8–14"'],['moyen','Mi-long 16–22"'],['long','Long 24–30"']];
+    var line=cats.map(function(c){return t===c[0]?'<b style="color:var(--gold-2)">'+c[1]+'</b>':'<span style="opacity:.6">'+c[1]+'</span>';}).join(' &nbsp;·&nbsp; ');
+    var desc={court:'Carré court qui encadre le visage — chic et moderne, idéal pour débuter.',moyen:'Tombe aux épaules / poitrine — le plus polyvalent, rendu naturel. Conseil : 3 packs.',long:'Bien en dessous de la poitrine — effet glamour et volumineux. Conseil : 4 à 5 packs.'}[t];
+    return line+'<br><span style="font-style:normal">'+desc+'</span>';
+  }
   function payLabel(){return {cb:'Carte bancaire','3x':'Paiement en 2 ou 3 fois',cash:'Espèces',wa:'WhatsApp'}[pay];}
   function summaryStr(){return [state.type,state.origine,state.grade,state.closure,state.texture,state.taille,state.couleur,state.quantite+' pack'+(state.quantite>1?'s':'')].join(' · ');}
   function waMessage(){
@@ -324,6 +331,7 @@ footer{padding:26px 0;text-align:center;font-size:12px;color:var(--muted);letter
     if(img&&img.getAttribute('src')!==src){img.style.opacity='0';setTimeout(function(){img.src=src;img.style.opacity='1';},150);}
     if(img) img.style.height=hpct+'%';
     document.getElementById('gSize').textContent=state.taille;
+    var th=document.getElementById('tailleHelp'); if(th) th.innerHTML=lengthGuide();
     document.querySelectorAll('.thumb').forEach(function(t){t.classList.toggle('on',t.dataset.v===state.texture);});
     // selected labels
     fields.forEach(function(f){var el=document.getElementById('sel-'+f.key); if(el) el.textContent=state[f.key];});
