@@ -120,7 +120,49 @@ table.spec th{color:var(--gold);font-weight:500;letter-spacing:.06em;font-size:1
 .reassure{font-size:12px;color:var(--gold-2);text-align:center;margin-top:12px;letter-spacing:.03em}
 .note{font-size:11px;color:var(--rose);margin-top:8px;text-align:center}
 footer{padding:26px 0;text-align:center;font-size:12px;color:var(--muted);letter-spacing:.05em}
-@media(max-width:900px){.buy{grid-template-columns:1fr;gap:30px}.gallery,.info{min-width:0}.gallery{position:static}.thumbs{min-width:0}.reviews{grid-template-columns:1fr}.pb-grid{grid-template-columns:1fr}.pb-grid>*{min-width:0}}
+/* enriched form + address autocomplete */
+.field{position:relative}
+.field .hintline{font-size:11px;color:var(--muted);margin-top:5px;letter-spacing:.01em}
+.field .err{display:none;font-size:11.5px;color:var(--rose);margin-top:5px;letter-spacing:.01em}
+.field.invalid .err{display:block}
+.field.invalid input,.field.invalid textarea{border-color:rgba(202,160,168,.6)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+.ac-menu{position:absolute;left:0;right:0;top:calc(100% + 5px);z-index:35;background:var(--plum-2);border:1px solid var(--gold);border-radius:7px;overflow:hidden;box-shadow:0 20px 46px rgba(0,0,0,.55)}
+.ac-item{padding:11px 14px;cursor:pointer;border-bottom:1px solid var(--line);transition:.15s}
+.ac-item:last-child{border-bottom:none}
+.ac-item:hover,.ac-item.active{background:linear-gradient(180deg,rgba(201,162,108,.16),rgba(46,20,34,.45))}
+.ac-item .l1{font-size:14px;color:var(--cream)}
+.ac-item .l2{font-size:12px;color:var(--muted);margin-top:1px}
+/* premium summary */
+.summary{padding:18px;border:1px solid var(--line);border-radius:7px;background:rgba(18,7,12,.5);margin-bottom:18px}
+.summary .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.sum-name{font-family:var(--serif);font-size:21px;color:var(--cream);margin-top:9px;line-height:1.2}
+.sum-l{font-size:13.5px;color:var(--muted);margin-top:5px;letter-spacing:.01em}
+.sum-div{height:1px;background:var(--line);margin:15px 0}
+.sum-total{font-family:var(--serif);font-size:28px;color:var(--gold-2);line-height:1.1}
+.sum-calc{font-size:12px;color:var(--muted);margin-top:3px}
+.sum-qty{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+.sum-qty .ql{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+/* help / whatsapp section */
+.help-block{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}
+.help-block .ht{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.help-block .hs{font-size:12.5px;color:var(--muted);margin-bottom:11px}
+.wa-opt{display:flex;gap:13px;align-items:center;border:1px solid var(--line);border-radius:6px;padding:13px 15px;cursor:pointer;transition:.2s;background:rgba(46,20,34,.4)}
+.wa-opt:hover{border-color:var(--gold-2)}
+.wa-opt.on{border-color:var(--gold);background:linear-gradient(180deg,rgba(201,162,108,.12),rgba(46,20,34,.5))}
+.wa-opt .ic{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--gold-2);border:1px solid var(--line)}
+.wa-opt b{font-size:14.5px;font-weight:500;color:var(--cream)}
+.wa-opt p{font-size:12px;color:var(--muted);margin-top:1px}
+.wa-opt .tick{margin-left:auto;width:18px;height:18px;border-radius:50%;border:1px solid var(--line);flex-shrink:0}
+.wa-opt.on .tick{background:var(--gold);border-color:var(--gold)}
+.reassure2{font-size:11.5px;color:var(--gold-2);text-align:center;margin-top:13px;letter-spacing:.04em;line-height:1.5}
+/* sticky mobile checkout CTA */
+.sticky-cta{display:none}
+@media(max-width:900px){.buy{grid-template-columns:1fr;gap:30px}.gallery,.info{min-width:0}.gallery{position:static}.thumbs{min-width:0}.reviews{grid-template-columns:1fr}.pb-grid{grid-template-columns:1fr}.pb-grid>*{min-width:0}
+  body{padding-bottom:86px}
+  .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;align-items:center;gap:12px;padding:14px 16px;padding-bottom:calc(14px + env(safe-area-inset-bottom));background:rgba(32,5,15,.96);backdrop-filter:blur(12px);border-top:1px solid rgba(218,181,117,.28)}
+  .sticky-cta .sc-total{font-size:12.5px;color:var(--gold-2);letter-spacing:.03em;white-space:nowrap;font-weight:500}
+  .sticky-cta .btn{flex:1;margin:0;padding:14px 14px;justify-content:center}}
 @media(max-width:560px){.wrap{padding:0 16px}.section{padding:40px 0}.pb-grid{padding:40px 0}.qty-cta{flex-wrap:wrap}.qty-cta .btn{flex:1 0 100%}.trust{grid-template-columns:1fr}.nav .back{font-size:11px}.price .now{font-size:30px}}
 </style>
 </head>
@@ -176,23 +218,39 @@ footer{padding:26px 0;text-align:center;font-size:12px;color:var(--muted);letter
     <div class="pb-grid">
       <div class="card">
         <h3>Vos coordonnées</h3>
-        <p class="hint">Pour confirmer et suivre votre commande.</p>
-        <div class="field"><label>Nom complet</label><input id="cName" type="text" placeholder="Votre nom"></div>
-        <div class="field"><label>Téléphone / WhatsApp</label><input id="cPhone" type="tel" placeholder="+33 6 ..."></div>
-        <div class="field"><label>Ville &amp; pays</label><input id="cCity" type="text" placeholder="Ville, Pays"></div>
-        <div class="field"><label>Note (optionnel)</label><textarea id="cNote" rows="2" placeholder="Une précision ?"></textarea></div>
+        <p class="hint">Renseignez vos informations pour recevoir la confirmation et finaliser votre commande.</p>
+        <div class="field" id="fName"><label>Nom complet</label><input id="cName" type="text" autocomplete="name" placeholder="Ex : Sarah Mbemba"><span class="err">Veuillez renseigner votre nom complet.</span></div>
+        <div class="field" id="fPhone"><label>Téléphone / WhatsApp</label><input id="cPhone" type="tel" autocomplete="tel" placeholder="Ex : +33 6 12 34 56 78"><span class="err">Veuillez indiquer un numéro WhatsApp valide.</span></div>
+        <div class="field" id="fAddr"><label>Adresse complète</label><input id="cAddr" type="text" autocomplete="off" placeholder="Ex : 12 rue de Rivoli, 75001 Paris"><div class="ac-menu" id="acMenu" style="display:none"></div><span class="err">Veuillez ajouter une adresse complète.</span></div>
+        <div class="field"><label>Note (optionnel)</label><textarea id="cNote" rows="2" placeholder="Une précision ? (étage, créneau de livraison…)"></textarea></div>
       </div>
       <div class="card">
-        <div class="summary"><span class="lbl">Votre sélection</span><p class="txt" id="summaryText"></p><div class="tot" id="totalLine"></div></div>
+        <div class="summary">
+          <span class="lbl">Votre sélection</span>
+          <div class="sum-name" id="sumName">Perruque sur mesure</div>
+          <div class="sum-l" id="sumL1">Indien · Bone Straight · 16"</div>
+          <div class="sum-l" id="sumL2">SDD · Closure HD · Naturel noir · 3 packs</div>
+          <div class="sum-div"></div>
+          <div class="sum-total" id="sumTotal">Total estimé : 165€</div>
+          <div class="sum-calc" id="sumCalc">3 × 55€, prix indicatif</div>
+          <div class="sum-qty">
+            <span class="ql">Quantité (packs)</span>
+            <div class="stepper"><button type="button" id="sqMinus">−</button><span id="sqVal">3</span><button type="button" id="sqPlus">+</button></div>
+          </div>
+        </div>
         <div class="hint" style="margin-bottom:10px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:11px">Mode de paiement</div>
         <div class="pays" id="pays">
-          <div class="pay on" data-pay="cb"><div class="ic">CB</div><div><b>Carte bancaire</b><p>Paiement sécurisé par lien (Visa, Mastercard, Amex).</p></div><div class="tick"></div></div>
+          <div class="pay on" data-pay="cb"><div class="ic">CB</div><div><b>Carte bancaire</b><p>Paiement sécurisé par lien — Visa, Mastercard, Amex.</p></div><div class="tick"></div></div>
           <div class="pay" data-pay="3x"><div class="ic">2-3×</div><div><b>Paiement en 2 ou 3 fois</b><p>Échelonné, par lien sécurisé.</p></div><div class="tick"></div></div>
-          <div class="pay" data-pay="cash"><div class="ic">€</div><div><b>Espèces</b><p>En main propre ou à la livraison.</p></div><div class="tick"></div></div>
-          <div class="pay" data-pay="wa"><div class="ic">WA</div><div><b>WhatsApp</b><p>Conseil &amp; paiement avec notre équipe.</p></div><div class="tick"></div></div>
+          <div class="pay" data-pay="cash"><div class="ic">€</div><div><b>Espèces à la remise</b><p>Disponible uniquement en main propre ou livraison locale.</p></div><div class="tick"></div></div>
         </div>
-        <a id="confirmBtn" class="btn btn-gold" style="width:100%;margin-top:18px" href="#">Confirmer ma commande</a>
-        <p class="reassure">Réponse personnalisée sous 24h · Sans engagement</p>
+        <div class="help-block">
+          <div class="ht">Besoin d'aide ?</div>
+          <div class="hs">Pas encore décidée ? Un conseiller finalise avec vous.</div>
+          <div class="wa-opt" id="waOpt" data-pay="wa"><div class="ic">✆</div><div><b>Finaliser avec WhatsApp</b><p>Un conseiller vous accompagne pour vérifier votre sélection et confirmer la commande.</p></div><div class="tick"></div></div>
+        </div>
+        <a id="confirmBtn" class="btn btn-gold" style="width:100%;margin-top:18px" href="#">Payer par carte</a>
+        <p class="reassure2">Paiement sécurisé · Confirmation personnalisée · Accompagnement WhatsApp</p>
         <p class="note" id="payNote"></p>
       </div>
     </div>
@@ -229,6 +287,12 @@ footer{padding:26px 0;text-align:center;font-size:12px;color:var(--muted);letter
 </div>
 
 <footer>© 2026 Faramaya Hair · Paiement : CB · 2-3× · Espèces · WhatsApp</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <span class="sc-total" id="scTotal">Total : 165€</span>
+  <a class="btn btn-gold" id="scBtn" href="#">Payer par carte</a>
+</div>
 
 <script>
 (function(){
@@ -301,9 +365,18 @@ footer{padding:26px 0;text-align:center;font-size:12px;color:var(--muted);letter
   }
 
   document.querySelectorAll('.gt-btn').forEach(function(b){b.addEventListener('click',function(){gMode=b.dataset.mode;document.querySelectorAll('.gt-btn').forEach(function(x){x.classList.remove('on');});b.classList.add('on');update();});});
-  document.getElementById('qMinus').addEventListener('click',function(){if(state.quantite>1){state.quantite--;update();}});
-  document.getElementById('qPlus').addEventListener('click',function(){if(state.quantite<5){state.quantite++;update();}});
-  document.querySelectorAll('.pay').forEach(function(el){el.addEventListener('click',function(){document.querySelectorAll('.pay').forEach(function(x){x.classList.remove('on');});el.classList.add('on');pay=el.dataset.pay;update();});});
+  function setQty(q){ state.quantite=Math.max(1,Math.min(5,q)); update(); }
+  document.getElementById('qMinus').addEventListener('click',function(){setQty(state.quantite-1);});
+  document.getElementById('qPlus').addEventListener('click',function(){setQty(state.quantite+1);});
+  document.getElementById('sqMinus').addEventListener('click',function(){setQty(state.quantite-1);});
+  document.getElementById('sqPlus').addEventListener('click',function(){setQty(state.quantite+1);});
+  function selectPay(mode){ pay=mode;
+    document.querySelectorAll('.pay').forEach(function(x){x.classList.toggle('on',x.dataset.pay===mode);});
+    document.getElementById('waOpt').classList.toggle('on',mode==='wa');
+    update();
+  }
+  document.querySelectorAll('.pay').forEach(function(el){el.addEventListener('click',function(){selectPay(el.dataset.pay);});});
+  document.getElementById('waOpt').addEventListener('click',function(){selectPay('wa');});
 
   function textureKey(){var o=textures.find(function(t){return t.v===state.texture;});return o?o.k:'boneStraight';}
   function sizeIndex(){var vals=fields.find(function(f){return f.key==='taille';}).options.map(function(o){return o.v;});var i=vals.indexOf(state.taille);return i<0?4:i;}
@@ -316,14 +389,100 @@ footer{padding:26px 0;text-align:center;font-size:12px;color:var(--muted);letter
     var desc={court:'Carré court qui encadre le visage — chic et moderne, idéal pour débuter.',moyen:'Tombe aux épaules / poitrine — le plus polyvalent, rendu naturel. Conseil : 3 packs.',long:'Bien en dessous de la poitrine — effet glamour et volumineux. Conseil : 4 à 5 packs.'}[t];
     return line+'<br><span style="font-style:normal">'+desc+'</span>';
   }
-  function payLabel(){return {cb:'Carte bancaire','3x':'Paiement en 2 ou 3 fois',cash:'Espèces',wa:'WhatsApp'}[pay];}
-  function summaryStr(){return [state.type,state.origine,state.grade,state.closure,state.texture,state.taille,state.couleur,state.quantite+' pack'+(state.quantite>1?'s':'')].join(' · ');}
+  function payLabel(){return {cb:'Carte bancaire','3x':'Paiement en 2 ou 3 fois',cash:'Espèces à la remise',wa:'Accompagnement WhatsApp'}[pay];}
+
+  // ---- coordonnées : adresse structurée (livraison France) ----
+  var addrParts={street:'',postalCode:'',city:'',country:'France'};
+  function val(id){var e=document.getElementById(id);return e?(e.value||'').trim():'';}
+  function escapeHtml(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function fullAddress(){
+    if(addrParts.city){return [addrParts.street,(addrParts.postalCode+' '+addrParts.city).trim(),addrParts.country].filter(Boolean).join(', ');}
+    return val('cAddr');
+  }
+
+  // ---- autocomplétion adresse via API officielle française ----
+  var addrInput=document.getElementById('cAddr'), acMenu=document.getElementById('acMenu'), acTimer;
+  addrInput.addEventListener('input',function(){
+    // saisie manuelle : on repart d'une adresse libre tant qu'aucune suggestion n'est choisie
+    addrParts={street:'',postalCode:'',city:'',country:'France'};
+    var q=addrInput.value.trim(); clearTimeout(acTimer);
+    if(q.length<3){hideAc();return;}
+    acTimer=setTimeout(function(){fetchAc(q);},350);
+    update();
+  });
+  function fetchAc(q){
+    fetch('https://api-adresse.data.gouv.fr/search/?q='+encodeURIComponent(q)+'&limit=5&autocomplete=1')
+      .then(function(r){return r.json();})
+      .then(function(d){var feats=(d&&d.features)?d.features:[]; if(!feats.length){hideAc();return;} renderAc(feats);})
+      .catch(function(){hideAc();}); // API indisponible : saisie manuelle reste possible
+  }
+  function renderAc(feats){
+    acMenu.innerHTML='';
+    feats.forEach(function(f){
+      var p=f.properties, l2=[p.postcode,p.city].filter(Boolean).join(' ');
+      var div=document.createElement('div'); div.className='ac-item';
+      div.innerHTML='<div class="l1">'+escapeHtml(p.name||p.label)+'</div><div class="l2">'+escapeHtml(l2)+'</div>';
+      div.addEventListener('click',function(){selectAddr(f);});
+      acMenu.appendChild(div);
+    });
+    acMenu.style.display='block';
+  }
+  function hideAc(){acMenu.style.display='none';acMenu.innerHTML='';}
+  function selectAddr(f){
+    var p=f.properties;
+    addrParts={street:p.name||'',postalCode:p.postcode||'',city:p.city||'',country:'France'};
+    addrInput.value=p.label||addrInput.value;
+    hideAc(); setErr('fAddr',false); update();
+  }
+  document.addEventListener('click',function(e){ if(!document.getElementById('fAddr').contains(e.target)) hideAc(); });
+  addrInput.addEventListener('keydown',function(e){ if(e.key==='Escape') hideAc(); });
+
+  // ---- validation douce ----
+  function validPhone(v){return /^\+?\d{8,15}$/.test(v.replace(/[\s.\-()]/g,''));}
+  function setErr(fid,on){var el=document.getElementById(fid); if(el) el.classList.toggle('invalid',on);}
+  function validate(){
+    var ok=true, first=null;
+    if(val('cName').length<2){setErr('fName',true);ok=false;first=first||'fName';} else setErr('fName',false);
+    if(!validPhone(val('cPhone'))){setErr('fPhone',true);ok=false;first=first||'fPhone';} else setErr('fPhone',false);
+    if(fullAddress().length<5){setErr('fAddr',true);ok=false;first=first||'fAddr';} else setErr('fAddr',false);
+    if(!ok&&first){var el=document.getElementById(first); el.scrollIntoView({behavior:'smooth',block:'center'}); var inp=el.querySelector('input'); if(inp) setTimeout(function(){inp.focus();},300);}
+    return ok;
+  }
+  ['cName','cPhone','cAddr'].forEach(function(id){var map={cName:'fName',cPhone:'fPhone',cAddr:'fAddr'};var e=document.getElementById(id);e.addEventListener('input',function(){setErr(map[id],false);});});
+  document.getElementById('cPhone').addEventListener('blur',function(){var v=val('cPhone'); if(v&&!validPhone(v)) setErr('fPhone',true);});
+
+  // ---- message WhatsApp complet ----
   function waMessage(){
-    var n=(document.getElementById('cName').value||'').trim(),ph=(document.getElementById('cPhone').value||'').trim(),ci=(document.getElementById('cCity').value||'').trim(),no=(document.getElementById('cNote').value||'').trim();
-    var m='Bonjour Faramaya Hair,\n\nJe souhaite commander :\n\nType : '+state.type+'\nOrigine : '+state.origine+'\nGrade : '+state.grade+'\nClosure : '+state.closure+'\nTexture : '+state.texture+'\nTaille : '+state.taille+'\nCouleur : '+state.couleur+'\nQuantité : '+state.quantite+' pack(s)\n\nPaiement souhaité : '+payLabel();
-    if(n)m+='\n\nNom : '+n; if(ph)m+='\nTéléphone : '+ph; if(ci)m+='\nVille : '+ci; if(no)m+='\nNote : '+no;
+    var n=val('cName'),ph=val('cPhone'),no=val('cNote'),ad=fullAddress();
+    var m='Bonjour Faramaya Hair,\n\nJe souhaite finaliser ma commande.\n\nSélection :\n'+state.type+' sur mesure'
+      +'\nOrigine : '+state.origine+'\nGrade : '+state.grade+'\nClosure : '+state.closure
+      +'\nTexture : '+state.texture+'\nTaille : '+state.taille+'\nCouleur : '+state.couleur
+      +'\nQuantité : '+state.quantite+' pack'+(state.quantite>1?'s':'')
+      +'\n\nTotal estimé : '+(unitPrice*state.quantite)+'€'
+      +'\n\nCoordonnées :\nNom : '+(n||'—')+'\nTéléphone : '+(ph||'—')+'\nAdresse : '+(ad||'—')
+      +'\n\nMode choisi : '+payLabel();
+    if(no)m+='\n\nNote :\n'+no;
     m+='\n\nMerci.'; return m;
   }
+  function computeTarget(){
+    var wa='https://wa.me/'+whatsappNumber+'?text='+encodeURIComponent(waMessage());
+    if(pay==='cb'&&paymentLinkCB!=='#') return paymentLinkCB;
+    if(pay==='3x'&&paymentLink3x!=='#') return paymentLink3x;
+    return wa;
+  }
+  function renderSummary(){
+    var total=unitPrice*state.quantite;
+    document.getElementById('sumName').textContent=state.type+' sur mesure';
+    document.getElementById('sumL1').textContent=[state.origine,state.texture,state.taille].join(' · ');
+    document.getElementById('sumL2').textContent=[state.grade,'Closure '+state.closure,state.couleur,state.quantite+' pack'+(state.quantite>1?'s':'')].join(' · ');
+    document.getElementById('sumTotal').textContent='Total estimé : '+total+'€';
+    document.getElementById('sumCalc').textContent=state.quantite+' × '+unitPrice+'€, prix indicatif';
+    document.getElementById('sqVal').textContent=state.quantite;
+  }
+
+  var ctaLong={cb:'Payer par carte','3x':'Demander un paiement en plusieurs fois',cash:'Confirmer ma commande',wa:'Continuer sur WhatsApp'};
+  var ctaShort={cb:'Payer par carte','3x':'Payer en plusieurs fois',cash:'Confirmer',wa:'Continuer'};
+
   function update(){
     // gallery image + length
     var img=document.getElementById('gImg'); var src, hpct;
@@ -334,27 +493,30 @@ footer{padding:26px 0;text-align:center;font-size:12px;color:var(--muted);letter
     document.getElementById('gSize').textContent=state.taille;
     var th=document.getElementById('tailleHelp'); if(th) th.innerHTML=lengthGuide();
     document.querySelectorAll('.thumb').forEach(function(t){t.classList.toggle('on',t.dataset.v===state.texture);});
-    // selected labels
     fields.forEach(function(f){var el=document.getElementById('sel-'+f.key); if(el) el.textContent=state[f.key];});
-    // title + price
     document.getElementById('title').textContent=state.type+' '+state.texture;
     document.getElementById('crumbType').textContent=state.type;
     document.getElementById('qVal').textContent=state.quantite;
     var total=unitPrice*state.quantite;
     document.getElementById('priceNow').textContent='dès '+total+'€';
     document.getElementById('priceOld').textContent=Math.round(total*1.2)+'€';
-    // summary + total
-    document.getElementById('summaryText').textContent=summaryStr();
-    document.getElementById('totalLine').textContent='Total indicatif : '+total+'€ ('+state.quantite+' × '+unitPrice+'€, prix exemple)';
-    // confirm action
-    var btn=document.getElementById('confirmBtn'),note=document.getElementById('payNote');
-    var wa='https://wa.me/'+whatsappNumber+'?text='+encodeURIComponent(waMessage());
-    document.getElementById('waQuick').href='https://wa.me/'+whatsappNumber+'?text='+encodeURIComponent('Bonjour Faramaya Hair, j\'ai une question sur '+state.type+' '+state.texture+'.');
-    if(pay==='wa'){btn.textContent='Confirmer sur WhatsApp';btn.href=wa;btn.target='_blank';note.textContent='';}
-    else if(pay==='cash'){btn.textContent='Confirmer (espèces)';btn.href=wa;btn.target='_blank';note.textContent='Nous convenons du retrait ou de la livraison avec vous.';}
-    else if(pay==='cb'){btn.textContent='Payer par carte';btn.href=(paymentLinkCB==='#'?wa:paymentLinkCB);btn.target='_blank';note.textContent=(paymentLinkCB==='#'?'Lien de paiement CB à connecter — en attendant, validez sur WhatsApp.':'');}
-    else{btn.textContent='Payer en 2-3 fois';btn.href=(paymentLink3x==='#'?wa:paymentLink3x);btn.target='_blank';note.textContent=(paymentLink3x==='#'?'Lien de paiement échelonné à connecter — en attendant, validez sur WhatsApp.':'');}
+    // premium summary (+ quantité)
+    renderSummary();
+    // CTA dynamique (desktop + sticky mobile)
+    var target=computeTarget();
+    var btn=document.getElementById('confirmBtn'); btn.textContent=ctaLong[pay]; btn.href=target; btn.target='_blank'; btn.rel='noopener';
+    var sc=document.getElementById('scBtn'); sc.textContent=ctaShort[pay]; sc.href=target; sc.target='_blank'; sc.rel='noopener';
+    document.getElementById('scTotal').textContent='Total : '+total+'€';
+    var note=document.getElementById('payNote');
+    note.textContent=((pay==='cb'&&paymentLinkCB==='#')||(pay==='3x'&&paymentLink3x==='#'))?'Lien de paiement sécurisé bientôt actif — en attendant, un conseiller valide votre commande sur WhatsApp.':'';
+    var wq=document.getElementById('waQuick'); if(wq) wq.href='https://wa.me/'+whatsappNumber+'?text='+encodeURIComponent('Bonjour Faramaya Hair, j\'ai une question sur '+state.type+' '+state.texture+'.');
   }
+
+  // validation avant action (CTA desktop + sticky)
+  function onConfirm(e){ if(!validate()){ e.preventDefault(); return false; } }
+  document.getElementById('confirmBtn').addEventListener('click',onConfirm);
+  document.getElementById('scBtn').addEventListener('click',onConfirm);
+
   // accordion
   document.querySelectorAll('.acc-q').forEach(function(b){b.addEventListener('click',function(){var it=b.parentElement;document.querySelectorAll('.acc-item').forEach(function(x){if(x!==it)x.classList.remove('open');});it.classList.toggle('open');});});
   update();
