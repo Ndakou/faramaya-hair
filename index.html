@@ -116,18 +116,18 @@ section.block{padding:84px 0}
 .carousel{position:relative;margin-top:42px}
 .car-track{display:flex;gap:22px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:none}
 .car-track::-webkit-scrollbar{display:none}
-.pcard{flex:0 0 300px;background:var(--plum-2);border:1px solid var(--line);border-radius:3px;overflow:hidden;transition:.3s}
+.pcard{flex:0 0 300px;background:var(--plum-2);border:1px solid var(--line);border-radius:3px;overflow:hidden;transition:.3s;display:flex;flex-direction:column}
 .pcard:hover{border-color:var(--gold)}
 .pcard .ph{aspect-ratio:1/1;overflow:hidden;background:var(--plum-3);position:relative}
 .pcard .ph img{width:100%;height:100%;object-fit:cover;transition:.6s}
 .pcard:hover .ph img{transform:scale(1.05)}
 .pcard .sale{position:absolute;top:12px;right:12px;background:var(--gold);color:#241019;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:2px;font-weight:600}
-.pcard .pb{padding:18px 18px 22px}
-.pcard h3{font-family:var(--serif);font-size:21px;font-weight:500;margin-bottom:6px}
+.pcard .pb{padding:18px 18px 22px;display:flex;flex-direction:column;flex:1}
+.pcard h3{font-family:var(--serif);font-size:21px;font-weight:500;margin-bottom:6px;min-height:2.4em;display:flex;align-items:flex-start}
 .pcard .pr{font-size:15px;color:var(--gold-2);margin-bottom:4px}
 .pcard .pr small{color:var(--muted);text-decoration:line-through;margin-left:6px}
-.pcard .ex{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose)}
-.pcard .btn{width:100%;justify-content:center;margin-top:14px}
+.pcard .ex{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);margin-bottom:14px}
+.pcard .btn{width:100%;justify-content:center;margin-top:auto}
 .car-nav{display:flex;gap:10px;justify-content:center;margin-top:24px}
 .car-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--cream);cursor:pointer;font-size:16px;transition:.25s}
 .car-nav button:hover{border-color:var(--gold);color:var(--gold-2)}
